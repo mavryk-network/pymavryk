@@ -227,7 +227,7 @@ def is_chain_id(v: Union[str, bytes]) -> bool:
 
 
 def is_address(v: Union[str, bytes]) -> bool:
-    """Check if value is a tz/KT address"""
+    """Check if value is a mv/KT address"""
     if isinstance(v, bytes):
         v = v.decode()
     address = v.split('%')[0]

@@ -72,6 +72,8 @@ class ContractInterface(ContextMixin):
             setattr(self, entrypoint, attr)
 
         for view_name, view_ty in self.views.items():
+            if view_name == 'token_metadata':
+                continue
             view_attr = ContractView(
                 context=context,
                 name=view_name,
@@ -365,38 +367,57 @@ class ContractInterface(ContextMixin):
     def _get_token_metadata_from_storage(self, token_id: int) -> Optional[ContractTokenMetadata]:
         self._logger.info('Trying to fetch token %s metadata from storage', token_id)
         try:
-            token_metadata_url = self.storage['token_metadata'][token_id]['token_info']['']().decode()
-        # FIXME: Dirty
+            token_metadata_dict = self.storage['token_metadata'][token_id]['token_info']()
         except (KeyError, AssertionError):
-            self._logger.info('Storage doesn\'t contain metadata URL for token %s', token_id)
+            self._logger.info('Storage doesn\'t contain metadata for token %s', token_id)
             return None
 
-        self._logger.info('Trying to fetch contract token metadata from `%s`', token_metadata_url)
-        parsed_url = urlparse(token_metadata_url)
+        if type(token_metadata_dict) == dict:
 
-        if parsed_url.scheme in ('http', 'https'):
-            token_metadata = ContractTokenMetadata.from_url(token_metadata_url, self.context)
+            def convert_value(value):
+                if isinstance(value, bytes):
+                    decoded = value.decode('utf-8')
+                    if decoded.lower() == 'true':
+                        return True
+                    elif decoded.lower() == 'false':
+                        return False
+                    return decoded
+                return value
 
-        elif parsed_url.scheme == 'ipfs':
-            token_metadata = ContractTokenMetadata.from_ipfs(parsed_url.netloc, self.context)
+            token_metadata_json = {key: convert_value(value) for key, value in token_metadata_dict.items()}
+            token_metadata = ContractTokenMetadata.from_json(token_metadata_json, self.context)
+        else:
+            try:
+                token_metadata_url = token_metadata_dict.decode()
+            except (KeyError, AssertionError):
+                self._logger.info('Storage doesn\'t contain metadata URL for token %s', token_id)
+                return None
+            self._logger.info('Trying to fetch contract token metadata from `%s`', token_metadata_url)
+            parsed_url = urlparse(token_metadata_url)
 
-        elif parsed_url.scheme == 'mavryk-storage':
-            parts = parsed_url.path.split('/')
-            if len(parts) == 1:
-                storage = self.storage
-            elif len(parts) == 2:
-                context = self._spawn_context(address=parsed_url.netloc)
-                storage = ContractInterface.from_context(context).storage
+            if parsed_url.scheme in ('http', 'https'):
+                token_metadata = ContractTokenMetadata.from_url(token_metadata_url, self.context)
+
+            elif parsed_url.scheme == 'ipfs':
+                token_metadata = ContractTokenMetadata.from_ipfs(parsed_url.netloc, self.context)
+
+            elif parsed_url.scheme == 'mavryk-storage':
+                parts = parsed_url.path.split('/')
+                if len(parts) == 1:
+                    storage = self.storage
+                elif len(parts) == 2:
+                    context = self._spawn_context(address=parsed_url.netloc)
+                    storage = ContractInterface.from_context(context).storage
+                else:
+                    raise NotImplementedError('Unknown metadata URL scheme')
+                token_metadata_json = json.loads(storage['metadata'][parts[-1]]().decode())
+                token_metadata = ContractTokenMetadata.from_json(token_metadata_json, self.context)
+
+            elif parsed_url.scheme == 'sha256':
+                raise NotImplementedError
+
             else:
                 raise NotImplementedError('Unknown metadata URL scheme')
-            token_metadata_json = json.loads(storage['metadata'][parts[-1]]().decode())
-            token_metadata = ContractTokenMetadata.from_json(token_metadata_json, self.context)
-
-        elif parsed_url.scheme == 'sha256':
-            raise NotImplementedError
-
-        else:
-            raise NotImplementedError('Unknown metadata URL scheme')
 
         return token_metadata
 

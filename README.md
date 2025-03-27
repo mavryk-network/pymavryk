@@ -121,7 +121,7 @@ Requirements:
 $ # prepare environment
 $ make install
 # # run full CI with tests
-$ make
+$ make all
 ```
 
 ## Quick start

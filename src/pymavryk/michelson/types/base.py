@@ -20,11 +20,11 @@ type_mappings = {
     'unit': 'None || Unit /* `from pymavryk import Unit` for resolving None ambiguity */',
     'bytes': 'str  /* Hex string */ ||\n\tbytes  /* Python byte string */',
     'timestamp': 'int  /* Unix time in seconds */ ||\n\tstring  /* Formatted datetime `%Y-%m-%dT%H:%M:%SZ` */',
-    'mumav': 'int  /* Amount in `utz` (10^-6) */ ||\n\tDecimal  /* Amount in `tz` */',
+    'mumav': 'int  /* Amount in `umv` (10^-6) */ ||\n\tDecimal  /* Amount in `mv` */',
     'contract': 'str  /* Base58 encoded `KT` address with optional entrypoint */'
     ' ||\n\tNone  /* when you need to avoid type checking */'
     ' ||\n\tUndefined  /* `from pymavryk import Undefined` for resolving None ambiguity  */',
-    'address': 'str  /* Base58 encoded `tz` or `KT` address */',
+    'address': 'str  /* Base58 encoded `mv` or `KT` address */',
     'key': 'str  /* Base58 encoded public key */',
     'key_hash': 'str  /* Base58 encoded public key hash */',
     'signature': 'str  /* Base58 encoded signature */',

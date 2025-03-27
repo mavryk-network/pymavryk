@@ -2,12 +2,12 @@ from unittest import TestCase
 
 from pymavryk import ContractInterface
 
-bob = "mv1iBobBobBobBobBobBobBobBobBodTWLCX"
+bob = "mv1TMgthRwT69X8WMqRyeMYLPEcoEfCKqX2w"
 code = """
 { parameter address ;
   storage nat ;
   code { LAMBDA (pair (option nat) nat) nat { UNPAIR ; IF_NONE {} { SWAP ; DROP } } ;
-         PUSH address "mv1iA1iceA1iceA1iceA1iceA1ice9ydjsaW" ;
+         PUSH address "mv1E2Y8khTrfaRUeErWUBfg6G7zNMKnM4JJL" ;
          DIG 2 ;
          CAR ;
          EMPTY_BIG_MAP address nat ;
@@ -47,9 +47,6 @@ class LambdaExecTestCase(TestCase):
         cls.maxDiff = None
         cls.ct = ContractInterface.from_michelson(code)
 
-    # TODO: Fix when Mavryk mainnet is deployed
     def test_simplest(self):
-        ...
-        # res = self.ct.default(bob).interpret()
-
-        # print(res.storage)
+        res = self.ct.default(bob).interpret()
+        print(res.storage)

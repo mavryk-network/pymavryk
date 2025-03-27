@@ -102,6 +102,11 @@
           "format": "uri-reference",
           "description": "A URI to an image of the asset for wallets and client applications to have a scaled down image to present to end-users. Reccomened maximum size of 350x350px."
         },
+        "icon": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "A URI to an image of the asset for wallets and client applications to have a scaled down image to present to end-users. Reccomened maximum size of 350x350px."
+        },
         "externalUri": {
           "type": "string",
           "format": "uri-reference",

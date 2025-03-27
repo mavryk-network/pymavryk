@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.12.2](https://github.com/baking-bad/pytezos/compare/3.12.1...3.12.2) (2025-03-27)
+
+### Changed
+
+* Token Metadata fixed
+* Tests fixed
+
 ## [3.12.1](https://github.com/baking-bad/pytezos/compare/3.12.0...3.12.1) (2024-06-11)
 
 ### Changed
