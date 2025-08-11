@@ -19,7 +19,7 @@
          AMOUNT ;
          COMPARE ;
          NEQ ;
-         IF { PUSH string "DontSendTez" ; FAILWITH } {} ;
+         IF { PUSH string "DontSendMav" ; FAILWITH } {} ;
          SWAP ;
          CAR ;
          IF_LEFT

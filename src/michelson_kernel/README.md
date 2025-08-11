@@ -5,7 +5,7 @@
 ## How to install
 
 ### Option 1: try online!
-Powered by awesome Binder: https://mybinder.org/v2/gh/baking-bad/pytezos/binder?filepath=michelson_quickstart.ipynb
+Powered by awesome Binder: https://mybinder.org/v2/gh/mavryk-network/pymavryk/binder?filepath=michelson_quickstart.ipynb
 
 ### Option 2: run in docker
 1. Get the latest image from dockerhub (only when new releases are published)
@@ -29,7 +29,7 @@ pyenv global 3.7.9  # per system
 
 2. Ensure you have several crypto libraries installed (see [pymavryk docs](https://pymavryk.mavryk.org/#requirements)):
 ```
-sudo apt install libsodium-dev libsecp256k1-dev libgmp-dev
+sudo apt install libsodium-dev libgmp-dev
 ```
 3. Install the PyMavryk package using pip
 ```
@@ -83,9 +83,9 @@ pip uninstall pymavryk
 * Technical details of the REPL implementation  
 https://forum.tezosagora.org/t/michelson-repl-in-a-jupyter-notebook/1749
 * Interactive tutorial demonstrating REPL features  
-https://mybinder.org/v2/gh/baking-bad/pytezos/binder?filepath=michelson_quickstart.ipynb
+https://mybinder.org/v2/gh/mavryk-network/pymavryk/binder?filepath=michelson_quickstart.ipynb
 * Same, but a rendered version  
-https://nbviewer.jupyter.org/github/baking-bad/pytezos/blob/binder/michelson_quickstart.ipynb
+https://nbviewer.jupyter.org/github/mavryk-network/pymavryk/blob/binder/michelson_quickstart.ipynb
 
 ### Sample notebooks
 Located in the current repository:  

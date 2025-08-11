@@ -202,7 +202,7 @@ class MichelsonKernel(Kernel):
     help_links = traitlets.List(
         [
             {'Guide': 'https://michelson.nomadic-labs.com/'},
-            {'Reference': 'https://tezos.gitlab.io/whitedoc/michelson.html'},
+            {'Reference': 'https://protocol.mavryk.org/whitedoc/michelson.html'},
         ]
     )
 

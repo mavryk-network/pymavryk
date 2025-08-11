@@ -164,7 +164,7 @@
                         {
                           "prim": "mumav",
                           "annots": [
-                            "%n_drop_tez"
+                            "%n_drop_mav"
                           ]
                         },
                         {
@@ -293,7 +293,7 @@
                             {
                               "prim": "mumav",
                               "annots": [
-                                "%n_drop_tez"
+                                "%n_drop_mav"
                               ]
                             },
                             {
@@ -405,7 +405,7 @@
                                 {
                                   "prim": "mumav",
                                   "annots": [
-                                    "%n_drop_tez"
+                                    "%n_drop_mav"
                                   ]
                                 },
                                 {

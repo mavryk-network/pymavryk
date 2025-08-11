@@ -1,9 +1,9 @@
 {
   "entrypoints": {
-    "tez_to_ctez_callback": {
+    "mav_to_ctez_callback": {
       "prim": "nat"
     },
-    "tez_to_ctez": {
+    "mav_to_ctez": {
       "prim": "pair",
       "args": [
         {
@@ -63,10 +63,10 @@
     "default": {
       "prim": "unit"
     },
-    "ctez_to_tez_callback": {
+    "ctez_to_mav_callback": {
       "prim": "nat"
     },
-    "ctez_to_tez": {
+    "ctez_to_mav": {
       "prim": "pair",
       "args": [
         {
@@ -78,7 +78,7 @@
         {
           "prim": "nat",
           "annots": [
-            "%minTezBought"
+            "%minMavBought"
           ]
         },
         {

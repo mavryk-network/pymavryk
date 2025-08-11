@@ -657,25 +657,25 @@ class OpcodesTestCase(TestCase):
             ('level.tz', '111', 'Unit', '1'),
             # Test addition and subtraction on mav
             (
-                'tez_add_sub.tz',
+                'mav_add_sub.tz',
                 'None',
                 '(Pair 2000000 1000000)',
                 '(Some (Pair 3000000 1000000))',
             ),
             (
-                'tez_add_sub.tz',
+                'mav_add_sub.tz',
                 'None',
                 '(Pair 2310000 1010000)',
                 '(Some (Pair 3320000 1300000))',
             ),
             (
-                'tez_add_sub.tz',
+                'mav_add_sub.tz',
                 'None',
                 '(Pair 2000000 1000000)',
                 '(Some (Pair 3000000 1000000))',
             ),
             (
-                'tez_add_sub.tz',
+                'mav_add_sub.tz',
                 'None',
                 '(Pair 2310000 1010000)',
                 '(Some (Pair 3320000 1300000))',

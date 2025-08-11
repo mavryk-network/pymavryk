@@ -17,8 +17,8 @@ from pymavryk.michelson.repl import Interpreter
 from pymavryk.michelson.sections.storage import StorageSection
 from pymavryk.operation import DEFAULT_BURN_RESERVE
 from pymavryk.operation import DEFAULT_GAS_RESERVE
+from pymavryk.operation.content import format_mav
 from pymavryk.operation.content import format_mumav
-from pymavryk.operation.content import format_tez
 from pymavryk.operation.group import OperationGroup
 
 
@@ -48,7 +48,7 @@ class ContractCall(ContextMixin):
     def with_amount(self, amount: Union[int, Decimal]) -> 'ContractCall':
         """Set amount of funds to send with transaction to the contract.
 
-        :param amount: amount in microtez (int) or mav (Decimal)
+        :param amount: amount in micromav (int) or mav (Decimal)
         :rtype: ContractCall
         """
         return ContractCall(
@@ -138,7 +138,7 @@ class ContractCall(ContextMixin):
         """Generate command line for mavkit-client."""
         arg = micheline_to_michelson(self.parameters['value'], inline=True)
         source = self.key.public_key_hash()
-        amount = format_tez(self.amount)
+        amount = format_mav(self.amount)
         entrypoint = self.parameters['entrypoint']
         return f'transfer {amount} from {source} to {self.address} --entrypoint \'{entrypoint}\' --arg \'{arg}\''
 
@@ -263,7 +263,7 @@ class ContractCall(ContextMixin):
         :param storage: Python object only. If storage is specified, `run_code` is called instead of `run_operation`.
         :param source: Can be specified for unit testing purposes
         :param sender: Can be specified for unit testing purposes, \
-        see https://tezos.gitlab.io/whitedoc/michelson.html#operations-on-contracts for the difference
+        see https://protocol.mavryk.org/whitedoc/michelson.html#operations-on-contracts for the difference
         :param gas_limit: Specify gas limit (default is gas hard limit)
         :rtype: ContractCallResult
         """

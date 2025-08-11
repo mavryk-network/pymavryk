@@ -24,7 +24,7 @@ from pymavryk.protocol.diff import make_patch
 def dir_to_files(path) -> List[Tuple[str, str]]:
     files = []
 
-    with open(os.path.join(path, 'TEZOS_PROTOCOL')) as f:
+    with open(os.path.join(path, 'MAVRYK_PROTOCOL')) as f:
         index = json.load(f)
 
     for module in index['modules']:
@@ -54,7 +54,7 @@ def tar_to_files(path=None, raw=None) -> List[Tuple[str, str]]:
 
 
 def url_to_files(url) -> List[Tuple[str, str]]:
-    res = requests.get(url, stream=True)
+    res = requests.get(url, stream=True, timeout=60)
     raw = b''
 
     for data in tqdm(res.iter_content()):
@@ -169,7 +169,7 @@ class Protocol(metaclass=InlineDocstring):
         return Protocol(files_to_proto(files))
 
     def index(self) -> dict:
-        """Generates TEZOS_PROTOCOL file.
+        """Generates MAVRYK_PROTOCOL file.
 
         :returns: dict with protocol hash and modules
         """
@@ -186,7 +186,7 @@ class Protocol(metaclass=InlineDocstring):
         :returns: bytes if path is None or nothing
         """
         files = proto_to_files(self._proto)
-        files.append(('TEZOS_PROTOCOL', json.dumps(self.index())))
+        files.append(('MAVRYK_PROTOCOL', json.dumps(self.index())))
         return files_to_tar(files, output_path)
 
     def export_html(self, output_path=None):
