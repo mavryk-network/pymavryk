@@ -8,7 +8,7 @@ from pymavryk import MichelsonRuntimeError
 from pymavryk.michelson.parse import michelson_to_micheline
 from pymavryk.michelson.repl import Interpreter
 
-CHAIN_ID = 'NetXdQprcVkpaWU'
+CHAIN_ID = 'NetXXAAR1wWQhhe'
 PUBLIC_KEY = 'edpktpPTi9MLK2wabnNny1kD5LvBmGtFdRjnCiUT3ZZgNDjjM4mpoh'
 SIGNATURE = 'edsigu3QszDjUpeqYqbvhyRxMpVFamEnvm9FYnt7YiiNt9nmjYfh8ZTbsybZ5WnBkhA7zfHsRVyuTnRsGLR6fNHt1Up1FxgyRtF'
 KEY_HASH = 'mv1VDuhoWLjBMmeM1iTS4g4aapw1Zwkz9ziU'
@@ -989,18 +989,18 @@ class OpcodesTestCase(TestCase):
             ('pexec.tz', '14', '38', '52'),
             ('pexec_2.tz', "{ 0 ; 1 ; 2 ; 3}", '4', "{ 0 ; 7 ; 14 ; 21 }"),
             # Test CHAIN_ID
-            ('chain_id_store.tz', 'None', 'Unit', '(Some "NetXdQprcVkpaWU")'),
+            ('chain_id_store.tz', 'None', 'Unit', '(Some "NetXXAAR1wWQhhe")'),
             (
                 'chain_id_store.tz',
                 '(Some 0x7a06a770)',
                 'Unit',
-                '(Some "NetXdQprcVkpaWU")',
+                '(Some "NetXXAAR1wWQhhe")',
             ),
             (
                 'chain_id_store.tz',
-                '(Some "NetXdQprcVkpaWU")',
+                '(Some "NetXXAAR1wWQhhe")',
                 'Unit',
-                '(Some "NetXdQprcVkpaWU")',
+                '(Some "NetXXAAR1wWQhhe")',
             ),
             # Test SELF
             ('self_with_entrypoint.tz', 'Unit', 'Left (Left 0)', 'Unit'),

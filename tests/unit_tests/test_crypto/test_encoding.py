@@ -14,7 +14,7 @@ class TestEncoding:
     @pytest.mark.parametrize(
         ('base58', 'prefix'),
         [
-            ('NetXdQprcVkpaWU', 'Net'),
+            ('NetXXAAR1wWQhhe', 'Net'),
             ('BKjWN8ALguCJ3oAjzMjZCNcFfUf1p9BfVAwYiVHs1QW3yMB9RNb', 'B'),
             ('oop1fbAVi2ZwEt3vpu4uKpYGbbxumyMBSWwWf9qbByeM4JYAu92', 'o'),
             ('LLoabcny4pVg1k6x3AktnNhwe1KSVBZh5Di45JeZPhUCmCu5Xj6ND', 'LLo'),
