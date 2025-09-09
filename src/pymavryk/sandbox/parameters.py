@@ -5,7 +5,7 @@ from typing import Dict
 
 from pymavryk.crypto.key import Key
 
-ATLAS = 'PtAtLasVEKaifqTNpsx9GtJ8DT27rVzZR4RhKsvNShPjeijEDwu'
+ATLAS = 'PtAtLasdzXg4XxeVNtWheo13nG4wHXP22qYMqFcT3fyBpWkFero'
 BOREAS = 'Pt8h9rz3r9F3Yx3wzJqF42sxsyVoo6kL4FBoJSWRzKmDvjXjHwV'
 C_UPDATE = 'Pt8h9rz3r9F3Yx3wzJqF42sxsyVoo6kL4FBoJSWRzKmDvjXjHwV'
 LATEST = BOREAS
