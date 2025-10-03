@@ -6,8 +6,8 @@ from typing import Dict
 from pymavryk.crypto.key import Key
 
 ATLAS = 'PtAtLasdzXg4XxeVNtWheo13nG4wHXP22qYMqFcT3fyBpWkFero'
-BOREAS = 'Pt8h9rz3r9F3Yx3wzJqF42sxsyVoo6kL4FBoJSWRzKmDvjXjHwV'
-C_UPDATE = 'Pt8h9rz3r9F3Yx3wzJqF42sxsyVoo6kL4FBoJSWRzKmDvjXjHwV'
+BOREAS = 'PtBoreasK2KPuKbeYtXeEdudEHS7YcMFHE9amwheUc4kejTxgRi'
+C_UPDATE = 'PtBoreasK2KPuKbeYtXeEdudEHS7YcMFHE9amwheUc4kejTxgRi'
 LATEST = BOREAS
 
 protocol_hashes = {
