@@ -113,7 +113,7 @@ $ pip install pymavryk
 
 ### Docker container
 
-Verified & minified images for CI/CD https://hub.docker.com/r/bakingbad/pytezos/tags
+Verified & minified images for CI/CD https://hub.docker.com/r/mavrykdynamics/pymavryk/tags
 
 ```shell
 $ # 1. Use image from registry

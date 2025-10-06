@@ -16,7 +16,7 @@ RUN python -m venv --without-pip --system-site-packages /opt/pymavryk \
     && touch /opt/pymavryk/src/michelson_kernel/__init__.py
 WORKDIR /opt/pymavryk
 ENV PATH="/opt/pymavryk/bin:$PATH"
-ENV PYTHON_PATH="/opt/pymavryk/src:$PATH"
+ENV PYTHONPATH="/opt/pymavryk/src"
 
 COPY pyproject.toml requirements.txt README.md /opt/pymavryk/
 
@@ -31,7 +31,7 @@ RUN apk add --update --no-cache \
 RUN adduser -D pymavryk
 USER pymavryk
 ENV PATH="/opt/pymavryk/bin:$PATH"
-ENV PYTHONPATH="/home/pymavryk:/home/pymravryk/src:/opt/pymavyk/src:/opt/pymavryk/lib/python3.12/site-packages:$PYTHONPATH"
+ENV PYTHONPATH="/opt/pymavryk/src:/opt/pymavryk/lib/python3.12/site-packages"
 WORKDIR /home/pymavryk/
 ENTRYPOINT [ "/opt/pymavryk/bin/jupyter-notebook", "--port=8888", "--ip=0.0.0.0" , "--no-browser", "--no-mathjax" ]
 EXPOSE 8888
@@ -39,4 +39,4 @@ EXPOSE 8888
 COPY --chown=pymavryk --from=compile-image /opt/pymavryk /opt/pymavryk
 COPY --chown=pymavryk . /opt/pymavryk
 
-RUN michelson-kernel install
+RUN /opt/pymavryk/bin/python -m michelson_kernel.cli install

@@ -45,7 +45,7 @@ SMARTPY_CLI_IMAGE = 'bakingbad/smartpy-cli'
 
 
 def make_bcd_link(network, address):
-    return f'https://better-call.dev/{network}/{address}'
+    return f'https://{network}.nexus.mavryk.org/explorer/account/{address}'
 
 
 def get_local_contract_path(path, extension='tz'):

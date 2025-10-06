@@ -10,11 +10,11 @@ Powered by awesome Binder: https://mybinder.org/v2/gh/mavryk-network/pymavryk/bi
 ### Option 2: run in docker
 1. Get the latest image from dockerhub (only when new releases are published)
 ```
-docker pull bakingbad/michelson-kernel
+docker pull mavrykdynamics/michelson-kernel
 ```
 2. Create container using verified docker image:
 ```
-docker run --rm -it -p 127.0.0.1:8888:8888 -v $(pwd):/home/jupyter/notebooks bakingbad/michelson-kernel
+docker run --rm -it -p 127.0.0.1:8888:8888 -v $(pwd):/home/jupyter/notebooks mavrykdyanmics/michelson-kernel
 ```
 3. Open the link from container output in your browser
 4. Save notebooks in the mapped folder in order not to loose them

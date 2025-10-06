@@ -16,7 +16,7 @@ RUN python -m venv --without-pip --system-site-packages /opt/pymavryk \
     && touch /opt/pymavryk/src/michelson_kernel/__init__.py
 WORKDIR /opt/pymavryk
 ENV PATH="/opt/pymavryk/bin:$PATH"
-ENV PYTHON_PATH="/opt/pymavryk/src:$PATH"
+ENV PYTHONPATH="/opt/pymavryk/src"
 
 COPY pyproject.toml requirements.slim.txt README.md /opt/pymavryk/
 
@@ -31,7 +31,7 @@ RUN apk add --update --no-cache \
 RUN adduser -D pymavryk
 USER pymavryk
 ENV PATH="/opt/pymavryk/bin:$PATH"
-ENV PYTHONPATH="/home/pymavryk:/home/pymavryk/src:/opt/pymavryk/src:/opt/pymavryk/lib/python3.12/site-packages:$PYTHONPATH"
+ENV PYTHONPATH="/opt/pymavryk/src:/opt/pymavryk/lib/python3.12/site-packages"
 WORKDIR /home/pymavryk/
 ENTRYPOINT ["python"]
 
