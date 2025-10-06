@@ -13,7 +13,7 @@ jobs:
         id: imagename
         run: echo "lower=$(echo '${{ github.repository_owner }}/${{ github.event.repository.name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
       - name: cache binder build on mybinder.org
-        uses: jupyterhub/repo2docker-action@v0.2
+        uses: jupyterhub/repo2docker-action@0.2
         with:
           NO_PUSH: true
           IMAGE_NAME: ${{ steps.imagename.outputs.lower }}
