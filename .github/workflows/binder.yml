@@ -19,5 +19,5 @@ jobs:
         with:
           NO_PUSH: true
           IMAGE_NAME: ${{ steps.imagename.outputs.lower }}
-          REPO2DOCKER_ARGS: --subdir=binder
+          TARGET_REPO_DIR: binder
           MYBINDERORG_TAG: ${{ github.event.ref }}

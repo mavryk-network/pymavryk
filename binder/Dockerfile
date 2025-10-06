@@ -1,12 +1,12 @@
-FROM python:3.8-slim-buster
+FROM python:3.12-slim-bookworm
 
 ARG NB_USER=mickey
 ARG NB_UID=1000
 
 USER root
 
-RUN apt update && \
-    apt install -y build-essential pkg-config libsodium-dev libgmp-dev && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential pkg-config libsodium-dev libgmp-dev && \
     rm -rf /var/lib/apt/lists/*
 
 COPY . /tmp/pymavryk
