@@ -20,11 +20,11 @@ jobs:
         message: |
           Pymavryk ${{ github.ref_name }} has been released 🎉
           More info at https://github.com/mavryk-network/pymavryk/releases/tag/${{ github.ref_name }}
-    - name: slack notification
-      uses: Ilshidur/action-slack@master
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      with:
-        args: |
-          Pymavryk ${{ github.ref_name }} has been released 🎉
-          More info at https://github.com/mavryk-network/pymavryk/releases/tag/${{ github.ref_name }}
+    # - name: slack notification
+    #   uses: Ilshidur/action-slack@master
+    #   env:
+    #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    #   with:
+    #     args: |
+    #       Pymavryk ${{ github.ref_name }} has been released 🎉
+    #       More info at https://github.com/mavryk-network/pymavryk/releases/tag/${{ github.ref_name }}

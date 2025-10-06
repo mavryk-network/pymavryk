@@ -64,7 +64,7 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ### Fixed
 
-- Fixed Parisnet operation injections.
+- Fixed Boreasnet operation injections.
 
 ## [3.13.1](https://github.com/mavryk-network/pymavryk/compare/3.13.0...3.13.1) - 2024-06-24
 
@@ -96,7 +96,7 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ### Added
 
-- Parisnet protocol support
+- Boreasnet protocol support
 - Compatibility with Python 3.12
 
 ### Changed

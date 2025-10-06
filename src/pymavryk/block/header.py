@@ -262,7 +262,7 @@ class BlockHeader(ContextMixin):
         """
         chain_watermark = bytes.fromhex(self.shell.chains.main.watermark())
         proto = protocol_version.get(self.protocol_data['protocol'], 0)
-        if proto >= 12:  # since Ithaca
+        if proto >= 1:
             watermark = b'\x11' + chain_watermark
         else:
             watermark = b'\x01' + chain_watermark

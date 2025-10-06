@@ -21,7 +21,8 @@ from pymavryk.operation.group import OperationGroup
 from pymavryk.sandbox.parameters import LATEST
 from pymavryk.sandbox.parameters import sandbox_addresses
 
-DOCKER_IMAGE = 'mavrykdynamics/sandboxed-node:v21.2-1'
+# DOCKER_IMAGE = 'mavrykdynamics/sandboxed-node:v21.2-1'
+DOCKER_IMAGE = 'mavrykdynamics/sandboxed-node:v20.3'
 MAX_ATTEMPTS = 60
 ATTEMPT_DELAY = 0.5
 MAVRYK_NODE_PORT = 8732

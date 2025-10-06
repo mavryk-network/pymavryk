@@ -56,7 +56,7 @@ sandbox_addresses = {
     'bootstrap2': 'mv1V73YiKvinVumxwvYWjCZBoT44wqBNhta7',
     'bootstrap1': 'mv18Cw7psUrAAPBpXYd9CtCpHg9EgjHP9KTe',
     # FIXME: Temporary, see test_sandbox.py
-    'alice': 'mv1E2Y8khTrfaRUeErWUBfg6G7zNMKnM4JJL',
+    'alice': 'mv1Hox9jGJg3uSmsv9NTvuK7rMHh25cq44nv',
 }
 
 # NOTE: Run `make sandbox-params` to update this file

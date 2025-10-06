@@ -31,6 +31,7 @@ rpc_docs = {
     "props": [
       "blocks",
       "chain_id",
+      "checkpoint",
       "invalid_blocks",
       "is_bootstrapped",
       "levels",
@@ -58,12 +59,19 @@ rpc_docs = {
     },
     "item": {
       "name": "block_id",
-      "descr": "A block identifier. This can take one of the following values:\n\t1.Block-hash - Hash in Base58Check notation.\n\t2.Alias - One of the following:'genesis/ head/ caboose/ savepoint/ checkpoint'.\n\t3.Block-level - index(integer) in the chain.\n\tOne can also specify the relative positions of block with respect to above three block identifiers. For ex. 'checkpoint~N' or checkpoint+N, where N is an integer, denotes the Nth block before(~) or after (+) the checkpoint."
+      "descr": "A block identifier. This is either a block hash in Base58Check notation, one the predefined aliases: 'genesis', 'head' or a block level (index in the chain). One might also use 'head~N' or '<hash>~N' where N is an integer to denote the Nth predecessor of the designated block.Also, '<hash>+N' denotes the Nth successor of a block."
     }
   },
   "/chains/{}/chain_id": {
     "GET": {
       "descr": "The chain unique identifier.",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/checkpoint": {
+    "GET": {
+      "descr": "DEPRECATED: use `../levels/{checkpoint, savepoint, caboose, history_mode}` instead. The current checkpoint for this chain.",
       "args": [],
       "ret": "Object"
     }
@@ -140,7 +148,7 @@ rpc_docs = {
   },
   "/config/history_mode": {
     "GET": {
-      "descr": "Returns the history mode of the node's underlying storage. In full or rolling mode, it provides the values of `additional_cycles` and `blocks_preservation_cycles`. The sum of these values is the total number of stored cycles.",
+      "descr": "Returns the history mode of the node's underlying storage.",
       "args": [],
       "ret": "Object"
     }
@@ -272,6 +280,7 @@ rpc_docs = {
       "active_chains",
       "applied_blocks",
       "bootstrapped",
+      "commit_hash",
       "heads",
       "protocols",
       "received_blocks",
@@ -308,6 +317,13 @@ rpc_docs = {
   "/monitor/bootstrapped": {
     "GET": {
       "descr": "Wait for the node to have synchronized its chain with a few peers (configured by the node's administrator), streaming head updates that happen during the bootstrapping process, and closing the stream at the end. If the node was already bootstrapped, returns the current head immediately.",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/monitor/commit_hash": {
+    "GET": {
+      "descr": "DEPRECATED: use `version` instead.",
       "args": [],
       "ret": "Object"
     }
@@ -818,10 +834,6 @@ rpc_docs = {
         {
           "name": "validation_pass",
           "descr": "Include operations filtered by validation pass (all by default)"
-        },
-        {
-          "name": "sources",
-          "descr": "Include operations filtered by sources (all by default)"
         }
       ],
       "ret": "Object"
@@ -858,14 +870,6 @@ rpc_docs = {
         {
           "name": "validation_pass",
           "descr": "Include operations filtered by validation pass (all by default)"
-        },
-        {
-          "name": "source",
-          "descr": "Include operations filtered by source (all by default)"
-        },
-        {
-          "name": "operation_hash",
-          "descr": "Include operations filtered by hash (all by default)"
         }
       ],
       "ret": "Object"
@@ -948,12 +952,12 @@ rpc_docs = {
       "merkle_tree",
       "merkle_tree_v2",
       "nonces",
+      "protocol_treasury",
       "raw",
       "sapling",
       "seed",
       "seed_computation",
       "smart_rollups",
-      "total_currently_staked",
       "total_frozen_stake",
       "total_supply"
     ]
@@ -1110,8 +1114,6 @@ rpc_docs = {
       "manager_key",
       "script",
       "single_sapling_get_diff",
-      "spendable",
-      "spendable_and_frozen_bonds",
       "staked_balance",
       "staking_numerator",
       "storage",
@@ -1130,14 +1132,14 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/contracts/{}/balance": {
     "GET": {
-      "descr": "The spendable balance of a contract (in mumav), also known as liquid balance. Corresponds to mav owned by the contract that are neither staked, nor in unstaked requests, nor in frozen bonds. Identical to the 'spendable' RPC.",
+      "descr": "Access the spendable balance of a contract, excluding frozen bonds.",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/contracts/{}/balance_and_frozen_bonds": {
     "GET": {
-      "descr": "The sum (in mumav) of the spendable balance and frozen bonds of a contract. Corresponds to the contract's full balance from which staked funds and unstake requests have been excluded. Identical to the 'spendable_and_frozen_bonds' RPC.",
+      "descr": "Access the sum of the spendable balance and frozen bonds of a contract. This sum is part of the contract's stake, and it is exactly the contract's stake if the contract is not a delegate.",
       "args": [],
       "ret": "Object"
     }
@@ -1207,7 +1209,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/contracts/{}/full_balance": {
     "GET": {
-      "descr": "The full balance (in mumav) of the contract. Includes its spendable balance, staked mav, unstake requests, and frozen bonds. Even if the contract is a delegate, it does not include any staked or delegated mav owned by external delegators.",
+      "descr": "Access the full balance of a contract, including frozen bonds and stake.",
       "args": [],
       "ret": "Object"
     }
@@ -1252,23 +1254,9 @@ rpc_docs = {
       "ret": "Object"
     }
   },
-  "/chains/{}/blocks/{}/context/contracts/{}/spendable": {
-    "GET": {
-      "descr": "The spendable balance of a contract (in mumav), also known as liquid balance. Corresponds to mav owned by the contract that are neither staked, nor in unstaked requests, nor in frozen bonds. Identical to the 'balance' RPC.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/contracts/{}/spendable_and_frozen_bonds": {
-    "GET": {
-      "descr": "The sum (in mumav) of the spendable balance and frozen bonds of a contract. Corresponds to the contract's full balance from which staked funds and unstake requests have been excluded. Identical to the 'balance_and_frozen_bonds' RPC.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
   "/chains/{}/blocks/{}/context/contracts/{}/staked_balance": {
     "GET": {
-      "descr": "Access the staked balance of a contract (in mumav). Returns None if the contract is originated, or neither delegated nor a delegate.",
+      "descr": "Access the staked balance of a contract. Returns None if the contract is originated, or neither delegated nor a delegate.",
       "args": [],
       "ret": "Object"
     }
@@ -1413,13 +1401,12 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}": {
     "GET": {
-      "descr": "Everything about a delegate. Gathers the outputs of all RPCs with the ../delegates/<pkh> prefix.",
+      "descr": "Everything about a delegate.",
       "args": [],
       "ret": "Object"
     },
     "props": [
       "active_staking_parameters",
-      "baking_power",
       "consensus_key",
       "current_baking_power",
       "current_frozen_deposits",
@@ -1427,29 +1414,20 @@ rpc_docs = {
       "deactivated",
       "delegated_balance",
       "delegated_contracts",
-      "delegators",
       "denunciations",
       "estimated_shared_pending_slashed_amount",
-      "external_delegated",
-      "external_staked",
       "frozen_deposits",
       "frozen_deposits_limit",
       "full_balance",
       "grace_period",
       "is_forbidden",
       "min_delegated_in_current_cycle",
-      "own_delegated",
-      "own_full_balance",
-      "own_staked",
       "participation",
       "pending_staking_parameters",
       "stakers",
       "staking_balance",
       "staking_denominator",
-      "total_delegated",
       "total_delegated_stake",
-      "total_staked",
-      "total_unstaked_per_cycle",
       "unstaked_frozen_deposits",
       "voting_info",
       "voting_power"
@@ -1462,13 +1440,6 @@ rpc_docs = {
       "ret": "Object"
     }
   },
-  "/chains/{}/blocks/{}/context/delegates/{}/baking_power": {
-    "GET": {
-      "descr": "The current baking power of a delegate, using the current staked and delegated balances of the baker and its delegators. In other words, the baking rights that the baker would get for a future cycle if the current cycle ended right at the current block.",
-      "args": [],
-      "ret": "String"
-    }
-  },
   "/chains/{}/blocks/{}/context/delegates/{}/consensus_key": {
     "GET": {
       "descr": "The active consensus key for a given delegate and the pending consensus keys.",
@@ -1478,14 +1449,14 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/current_baking_power": {
     "GET": {
-      "descr": "DEPRECATED; use baking_power instead.",
+      "descr": "The baking power of a delegate, as computed from its current stake. This value is not used for computing baking rights but only reflects the baking power that the delegate would have if the cycle ended at the current block.",
       "args": [],
       "ret": "String"
     }
   },
   "/chains/{}/blocks/{}/context/delegates/{}/current_frozen_deposits": {
     "GET": {
-      "descr": "DEPRECATED; use total_staked instead.",
+      "descr": "Returns the current amount of the frozen deposits (in mumav). That is the frozen deposits at beginning of cycle plus rewards minus unstaked and slashing. It doesn't count unstaked frozen deposits.",
       "args": [],
       "ret": "Object"
     }
@@ -1506,21 +1477,14 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/delegated_balance": {
     "GET": {
-      "descr": "DEPRECATED; to get this value, you can call RPCs external_staked and external_delegated, and add their outputs together.",
+      "descr": "Returns the sum (in mumav) of all balances of all the contracts that delegate to a given delegate. This excludes the delegate's own balance, its frozen deposits and its frozen bonds.",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/delegates/{}/delegated_contracts": {
     "GET": {
-      "descr": "DEPRECATED; use delegators instead.",
-      "args": [],
-      "ret": "Array"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/delegators": {
-    "GET": {
-      "descr": "The list of all contracts that are currently delegating to the delegate. Includes both user accounts and smart contracts. Includes the delegate itself.",
+      "descr": "Returns the list of contracts that delegate to a given delegate.",
       "args": [],
       "ret": "Array"
     }
@@ -1539,37 +1503,23 @@ rpc_docs = {
       "ret": "Object"
     }
   },
-  "/chains/{}/blocks/{}/context/delegates/{}/external_delegated": {
-    "GET": {
-      "descr": "The sum (in mumav) of non-staked tokens that currently count as delegated to the baker, excluding those owned by the baker iself. Does not take limits such as overstaking or overdelegation into account. This includes the spendable balances and frozen bonds of all the baker's external delegators. It also includes unstake requests of contracts other than the baker, on the condition that the contract was delegating to the baker at the time of the unstake operation. So this includes most but not all unstake requests from current delegators, and might include some unstake requests from old delegators. Limits such as overstaking and overdelegation have not been applied yet.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/external_staked": {
-    "GET": {
-      "descr": "The sum (in mumav) of all tokens currently staked by the baker's external delegators. This excludes the baker's own staked tokens.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
   "/chains/{}/blocks/{}/context/delegates/{}/frozen_deposits": {
     "GET": {
-      "descr": "DEPRECATED; call RPC total_staked on the last block of (current_cycle - 3) instead. Returns the total amount (in mumav) that was staked for the baker by all stakers (including the baker itself) at the time the staking rights for the current cycle were computed.",
+      "descr": "Returns the amount (in mumav) frozen as a deposit at the time the staking rights for the current cycle where computed.",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/delegates/{}/frozen_deposits_limit": {
     "GET": {
-      "descr": "DEPRECATED; the frozen deposits limit has no effects since the activation of Adaptive Issuance and Staking during the Paris protocol.",
+      "descr": "Returns the frozen deposits limit for the given delegate or none if no limit is set.",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/delegates/{}/full_balance": {
     "GET": {
-      "descr": "DEPRECATED; use own_full_balance instead.",
+      "descr": "Returns the full balance (in mumav) of a given delegate, including the frozen deposits and the frozen bonds. It does not include its delegated balance.",
       "args": [],
       "ret": "Object"
     }
@@ -1590,28 +1540,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/min_delegated_in_current_cycle": {
     "GET": {
-      "descr": "Returns the minimum of delegated mav (in mumav) during the current cycle and the block level at the end of which the minimum was reached. This only takes into account the value of `total_delegated` at the end of each block, not in the middle of applying operations. This is the delegated amount that would be used to compute the delegate's future baking rights if the cycle ended at the current block. If the minimum was reached multiple times, the returned level is the earliest level of the current cycle that reached this minimum. For instance, if `total_delegated` hasn't changed at all since the beginning of the current cycle, returns the first level of the current cycle. (If the contract is not registered as a delegate, returns 0 mumav and omits the level.)",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/own_delegated": {
-    "GET": {
-      "descr": "The amount (in mumav) currently owned by the baker itself and counting as delegated for the purpose of baking rights. This corresponds to all non-staked tokens owned by the baker: spendable balance, frozen bonds, and unstake requests. (Note: There is one exception: if the baker still has unstake requests created at a time when it was delegating to a different delegate, then these unstake requests still count as delegated to the former delegate. Any such unstake requests are excluded from the amount returned by the present RPC, despite being non-staked tokens owned by the baker.)",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/own_full_balance": {
-    "GET": {
-      "descr": "The full balance (in mumav) of tokens owned by the delegate itself. Includes its spendable balance, staked mav, unstake requests, and frozen bonds. Does not include any tokens owned by external delegators. This RPC fails when the pkh is not a delegate. When it is a delegate, this RPC outputs the same amount as ../<block_id>/context/contracts/<delegate_contract_id>/full_balance.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/own_staked": {
-    "GET": {
-      "descr": "The amount (in mumav) currently owned and staked by the baker itself. Returns the same value as ../<block_id>/context/contracts/<delegate_contract_id>/staked_balance (except for the fact that the present RPC fails if the public_key_hash in the path is not a delegate).",
+      "descr": "Returns the minimum of delegated mav (in mumav) over the current cycle and the block level where this value was last updated (* Level is `None` when decoding values from protocol O).",
       "args": [],
       "ret": "Object"
     }
@@ -1639,7 +1568,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/staking_balance": {
     "GET": {
-      "descr": "DEPRECATED; to get this value, you can call RPCs total_staked and total_delegated, and add their outputs together.",
+      "descr": "Returns the total amount of tokens (in mumav) delegated to a given delegate. This includes the balances of all the contracts that delegate to it, but also the balance of the delegate itself, its frozen deposits, and its frozen bonds.",
       "args": [],
       "ret": "Object"
     }
@@ -1651,37 +1580,16 @@ rpc_docs = {
       "ret": "Object"
     }
   },
-  "/chains/{}/blocks/{}/context/delegates/{}/total_delegated": {
-    "GET": {
-      "descr": "All tokens (in mumav) that currently count as delegated for the purpose of computing the baker's rights; they weigh half as much as staked mav in the rights. Limits such as overstaking and overdelegation have not been applied yet. This corresponds to all non-staked mav owned by the baker's delegators (including the baker itself): spendable balances, frozen bonds, and unstaked requests, except for any unstake requests that have been created before the delegator changed its delegate to the current baker (because they still count as delegated for the old delegate instead).",
-      "args": [],
-      "ret": "Object"
-    }
-  },
   "/chains/{}/blocks/{}/context/delegates/{}/total_delegated_stake": {
     "GET": {
-      "descr": "DEPRECATED; use external_staked instead.",
+      "descr": "Returns the sum (in mumav) of all tokens staked by the delegators of a given delegate. This excludes the delegate's own staked tokens.",
       "args": [],
       "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/total_staked": {
-    "GET": {
-      "descr": "The total amount (in mumav) currently staked for the baker, both by the baker itself and by external stakers. This is the staked amount before applying the baker's 'limit_of_staking_over_baking'; in other words, it includes overstaked mav if there are any.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/delegates/{}/total_unstaked_per_cycle": {
-    "GET": {
-      "descr": "For each cycle, returns the total amount (in mumav) contained in all unstake requests created during this cycle by all delegators, including the baker itself. Note that these tokens count as delegated to the baker for the purpose of computing baking rights, and are included in the amount returned by the total_delegated RPC.",
-      "args": [],
-      "ret": "Array"
     }
   },
   "/chains/{}/blocks/{}/context/delegates/{}/unstaked_frozen_deposits": {
     "GET": {
-      "descr": "DEPRECATED; use total_unstaked_per_cycle instead.",
+      "descr": "Returns, for each cycle, the sum of unstaked-but-frozen deposits for this cycle. Cycles go from the last unslashable cycle to the current cycle.",
       "args": [],
       "ret": "Array"
     }
@@ -1718,35 +1626,35 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/issuance/current_yearly_rate": {
     "GET": {
-      "descr": "Returns the current expected maximum yearly issuance rate (in %). The value only includes participation rewards (and does not include liquidity baking)",
+      "descr": "Returns the current expected maximum yearly issuance rate (in %)",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/issuance/current_yearly_rate_details": {
     "GET": {
-      "descr": "Returns the static and dynamic parts of the current expected maximum yearly issuance rate (in %). The value only includes participation rewards (and does not include liquidity baking)",
+      "descr": "Returns the static and dynamic parts of the current expected maximum yearly issuance rate.",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/issuance/current_yearly_rate_exact": {
     "GET": {
-      "descr": "Returns the current expected maximum yearly issuance rate (exact quotient) (in %). The value only includes participation rewards (and does not include liquidity baking)",
+      "descr": "Returns the current expected maximum yearly issuance rate (exact quotient)",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/issuance/expected_issuance": {
     "GET": {
-      "descr": "Returns the expected issued mav for the provided block and the next 'consensus_rights_delay' cycles (in mumav)",
+      "descr": "Returns the expected issued mav for the provided block and the next 'consensus_rights_delay' cycles",
       "args": [],
       "ret": "Array"
     }
   },
   "/chains/{}/blocks/{}/context/issuance/issuance_per_minute": {
     "GET": {
-      "descr": "Returns the current expected maximum issuance per minute (in mumav). The value only includes participation rewards (and does not include liquidity baking)",
+      "descr": "Returns the current expected maximum issuance per minute (in mumav)",
       "args": [],
       "ret": "Object"
     }
@@ -1796,6 +1704,26 @@ rpc_docs = {
   "/chains/{}/blocks/{}/context/nonces/{}": {
     "GET": {
       "descr": "Info about the nonce of a previous block.",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/blocks/{}/context/protocol_treasury": {
+    "props": [
+      "address",
+      "buffer_address"
+    ]
+  },
+  "/chains/{}/blocks/{}/context/protocol_treasury/address": {
+    "GET": {
+      "descr": "Protocol treasury address",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/blocks/{}/context/protocol_treasury/buffer_address": {
+    "GET": {
+      "descr": "Protocol treasury buffer address",
       "args": [],
       "ret": "Object"
     }
@@ -1891,7 +1819,6 @@ rpc_docs = {
   "/chains/{}/blocks/{}/context/smart_rollups/smart_rollup/{}": {
     "props": [
       "commitment",
-      "consumed_outputs",
       "genesis_info",
       "inbox_level",
       "kind",
@@ -1931,19 +1858,6 @@ rpc_docs = {
   "/chains/{}/blocks/{}/context/smart_rollups/smart_rollup/{}/commitment/{}/stakers_indexes": {
     "GET": {
       "descr": "List of stakers indexes staking on a given commitment",
-      "args": [],
-      "ret": "Array"
-    }
-  },
-  "/chains/{}/blocks/{}/context/smart_rollups/smart_rollup/{}/consumed_outputs": {
-    "item": {
-      "name": "block_level",
-      "descr": "A level integer"
-    }
-  },
-  "/chains/{}/blocks/{}/context/smart_rollups/smart_rollup/{}/consumed_outputs/{}": {
-    "GET": {
-      "descr": "Return the known consumed outputs of a smart rollup.",
       "args": [],
       "ret": "Array"
     }
@@ -2090,13 +2004,6 @@ rpc_docs = {
   "/chains/{}/blocks/{}/context/smart_rollups/smart_rollup/{}/whitelist": {
     "GET": {
       "descr": "Whitelist for private smart rollups. If the output is None then the rollup is public.",
-      "args": [],
-      "ret": "Object"
-    }
-  },
-  "/chains/{}/blocks/{}/context/total_currently_staked": {
-    "GET": {
-      "descr": "Returns the amount of staked mav by delegates, delegators or overstaked.",
       "args": [],
       "ret": "Object"
     }
@@ -2323,7 +2230,7 @@ rpc_docs = {
           "descr": "\u00af\\_(\u30c4)_/\u00af"
         }
       ],
-      "ret": "Array"
+      "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/helpers/preapply": {
@@ -2837,6 +2744,8 @@ rpc_docs = {
       "liquidity_baking_escape_ema",
       "pending_migration_balance_updates",
       "pending_migration_operation_results",
+      "protocol_treasury_buffer_address",
+      "protocol_treasury_escape_ema",
       "ramp_up",
       "sapling",
       "seed_status",
@@ -4023,6 +3932,30 @@ rpc_docs = {
       "ret": "Array"
     }
   },
+  "/chains/{}/blocks/{}/context/raw/json/protocol_treasury_buffer_address": {
+    "GET": {
+      "descr": "\u00af\\_(\u30c4)_/\u00af",
+      "args": [
+        {
+          "name": "depth",
+          "descr": "\u00af\\_(\u30c4)_/\u00af"
+        }
+      ],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/blocks/{}/context/raw/json/protocol_treasury_escape_ema": {
+    "GET": {
+      "descr": "\u00af\\_(\u30c4)_/\u00af",
+      "args": [
+        {
+          "name": "depth",
+          "descr": "\u00af\\_(\u30c4)_/\u00af"
+        }
+      ],
+      "ret": "Integer"
+    }
+  },
   "/chains/{}/blocks/{}/context/raw/json/ramp_up": {
     "GET": {
       "descr": "\u00af\\_(\u30c4)_/\u00af",
@@ -4401,7 +4334,7 @@ rpc_docs = {
     "props": [
       "inbox",
       "index",
-      "past_commitment_periods"
+      "previous_commitment_period"
     ]
   },
   "/chains/{}/blocks/{}/context/raw/json/smart_rollup/inbox": {
@@ -4957,7 +4890,7 @@ rpc_docs = {
       "ret": "String"
     }
   },
-  "/chains/{}/blocks/{}/context/raw/json/smart_rollup/past_commitment_periods": {
+  "/chains/{}/blocks/{}/context/raw/json/smart_rollup/previous_commitment_period": {
     "GET": {
       "descr": "\u00af\\_(\u30c4)_/\u00af",
       "args": [
@@ -4966,7 +4899,7 @@ rpc_docs = {
           "descr": "\u00af\\_(\u30c4)_/\u00af"
         }
       ],
-      "ret": "Array"
+      "ret": "Integer"
     }
   },
   "/chains/{}/blocks/{}/context/raw/json/staking_balance": {

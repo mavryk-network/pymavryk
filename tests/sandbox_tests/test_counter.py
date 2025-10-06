@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class TransactionCounterTestCase(SandboxedNodeTestCase):
-    @skip('Not applicable in Parisnet?')
+    @skip('Not applicable in Boreasnet?')
     def test_1_send_multiple_transactions_non_batched(self) -> None:
         client = self.client
         # Only one manager operation per manager per block allowed
