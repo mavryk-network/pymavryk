@@ -19,5 +19,5 @@ jobs:
         with:
           NO_PUSH: true
           IMAGE_NAME: ${{ steps.imagename.outputs.lower }}
-          TARGET_REPO_DIR: binder
+          args: --subdir binder
           MYBINDERORG_TAG: ${{ github.event.ref }}
