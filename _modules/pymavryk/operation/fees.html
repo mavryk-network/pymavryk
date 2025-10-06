@@ -1,22 +1,22 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pymavryk.operation.fees &mdash; PyMavryk  documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://pymavryk.mavryk.org/_modules/pymavryk/operation/fees.html" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -83,11 +83,11 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pymavryk.operation.fees</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">pymavryk.operation.forge</span> <span class="kn">import</span> <span class="n">forge_operation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymavryk.operation.forge</span><span class="w"> </span><span class="kn">import</span> <span class="n">forge_operation</span>
 
 <span class="n">DEFAULT_CONSTANTS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;hard_gas_limit_per_operation&#39;</span><span class="p">:</span> <span class="mi">1040000</span><span class="p">,</span>
@@ -101,7 +101,9 @@
 <span class="n">MINIMAL_MUMAV_PER_GAS_UNIT</span> <span class="o">=</span> <span class="mf">0.1</span>
 
 
-<div class="viewcode-block" id="calculate_fee"><a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.calculate_fee">[docs]</a><span class="k">def</span> <span class="nf">calculate_fee</span><span class="p">(</span>
+<div class="viewcode-block" id="calculate_fee">
+<a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.calculate_fee">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_fee</span><span class="p">(</span>
     <span class="n">content</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="n">consumed_gas</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">extra_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -122,7 +124,10 @@
     <span class="k">return</span> <span class="n">fee</span> <span class="o">+</span> <span class="n">reserve</span></div>
 
 
-<div class="viewcode-block" id="default_fee"><a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.default_fee">[docs]</a><span class="k">def</span> <span class="nf">default_fee</span><span class="p">(</span>
+
+<div class="viewcode-block" id="default_fee">
+<a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.default_fee">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">default_fee</span><span class="p">(</span>
     <span class="n">content</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="n">gas_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">minimal_nanomav_per_gas_unit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -139,7 +144,10 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="default_gas_limit"><a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.default_gas_limit">[docs]</a><span class="k">def</span> <span class="nf">default_gas_limit</span><span class="p">(</span>
+
+<div class="viewcode-block" id="default_gas_limit">
+<a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.default_gas_limit">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">default_gas_limit</span><span class="p">(</span>
     <span class="n">content</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="n">constants</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -167,7 +175,10 @@
     <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">]]</span></div>
 
 
-<div class="viewcode-block" id="default_storage_limit"><a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.default_storage_limit">[docs]</a><span class="k">def</span> <span class="nf">default_storage_limit</span><span class="p">(</span>
+
+<div class="viewcode-block" id="default_storage_limit">
+<a class="viewcode-back" href="../../../operation_groups.html#pymavryk.operation.fees.default_storage_limit">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">default_storage_limit</span><span class="p">(</span>
     <span class="n">content</span><span class="p">,</span>
     <span class="n">constants</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -193,6 +204,7 @@
         <span class="s1">&#39;smart_rollup_execute_outbox_message&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">constants</span><span class="p">[</span><span class="s1">&#39;hard_storage_limit_per_operation&#39;</span><span class="p">]),</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">values</span><span class="p">[</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;kind&#39;</span><span class="p">]]</span></div>
+
 </pre></div>
 
            </div>

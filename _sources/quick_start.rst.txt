@@ -22,7 +22,7 @@ Use apt or your favourite package manager:
 
 .. code-block::
 
-   $ sudo apt install libsodium-dev libsecp256k1-dev libgmp-dev
+   $ sudo apt install libsodium-dev libgmp-dev
 
 *MacOS*
 
@@ -30,8 +30,7 @@ Use homebrew:
 
 .. code-block::
 
-   $ brew tap cuber/homebrew-libsecp256k1
-   $ brew install libsodium libsecp256k1 gmp
+   $ brew install libsodium gmp
 
 *Windows*
 
@@ -58,7 +57,7 @@ In Google Colab notebook:
 
 .. code-block:: python
 
-   >>> !apt install libsodium-dev libsecp256k1-dev libgmp-dev
+   >>> !apt install libsodium-dev libgmp-dev
    >>> !pip install pymavryk
    [RESTART RUNTIME]
 
@@ -77,7 +76,7 @@ All active interaction with the blockchain starts with the PyMavrykClient:
 
     Properties
     .key		mv1VDuhoWLjBMmeM1iTS4g4aapw1Zwkz9ziU
-    .shell		['https://rpc.tzkt.io/ghostnet']
+    .shell		['https://basenet.rpc.mavryk.network']
     .block_id	head
 
     Helpers
@@ -121,7 +120,7 @@ We are interested in ``using`` method, which is responsible for setting up manag
     Change current RPC endpoint and account (private key).
 
     :param shell: one of 'mainnet', '***net', or RPC node uri, or instance of :class:`pymavryk.rpc.shell.ShellQuery`
-    :param key: base58 encoded key, path to the faucet file, faucet file itself, alias from octez-client, or `Key`
+    :param key: base58 encoded key, path to the faucet file, faucet file itself, alias from mavkit-client, or `Key`
     :param mode: whether to use `readable` or `optimized` encoding for parameters/storage/other
     :returns: A copy of current object with changes applied
 
@@ -167,7 +166,7 @@ Set key as default
 
     Properties
     .key		mv1Ue5qMgJFNFKkjF9x7z867ciE8imnKX8V3
-    .shell		['https://rpc.tzkt.io/ghostnet']
+    .shell		['https://basenet.rpc.mavryk.network']
     .block_id	head
 
     Helpers
@@ -203,7 +202,7 @@ Set key as default
 Top up account
 ^^^^^^^^^^^^^^
 
-Go to the `https://faucet.ghostnet.teztnets.xyz/ <https://faucet.ghostnet.teztnets.xyz/>` and paste your public key hash key file to the "Wallet address" field.  
+Go to the `https://basenet.faucet.mavryk.network/ <https://basenet.faucet.mavryk.network/>` and paste your public key hash key file to the "Wallet address" field.  
 Press "Request 2001 mav" and wait for transaction to be completed.  
 
 Check that your balance is non-zero:
@@ -229,7 +228,7 @@ Now, in order to start using this key we need to send the according public key t
 
     Properties
     .key		mv1Ue5qMgJFNFKkjF9x7z867ciE8imnKX8V3
-    .shell		['https://rpc.tzkt.io/ghostnet']
+    .shell		['https://basenet.rpc.mavryk.network']
     .block_id	head
 
     Hash
@@ -393,7 +392,7 @@ We have our contracts deployed and ready to be invoked, let's see the list of en
 
     Properties
     .key		mv1Ue5qMgJFNFKkjF9x7z867ciE8imnKX8V3
-    .shell		['https://rpc.tzkt.io/ghostnet']
+    .shell		['https://basenet.rpc.mavryk.network']
     .address	KT1Si4t6ETLoj6eEsjp8hvfJeiFe3b6Z7eM5
     .block_id	head
     .entrypoint	default
@@ -441,7 +440,7 @@ And for the wallet:
 
     Properties
     .key		mv1Ue5qMgJFNFKkjF9x7z867ciE8imnKX8V3
-    .shell		['https://rpc.tzkt.io/ghostnet']
+    .shell		['https://basenet.rpc.mavryk.network']
     .address	KT1S4UmLNwVcmLBE9VgHKpJJWpKE1JE8VjwN
     .block_id	head
     .entrypoint	default
@@ -511,7 +510,7 @@ as it has BigMap entries, named entrypoints, and a non-trivial data scheme.
 
     Properties
     .key  # mv1LDPE2n2mZXbQt3MwR5ZbQU432eag71grX
-    .shell  # https://mainnet-tezos.giganode.io/ (mainnet)
+    .shell  # https://rpc.mavryk.network/ (mainnet)
     .address  # KT1REEb5VxWRjcHm5GzDMwErMmNFftsE5Gpf
     .block_id  # head
     .storage  # access storage data at block `block_id`
@@ -586,7 +585,7 @@ In order to see type definition, just remove the trailing brackets:
 
     Properties
     .key  # mv1LDPE2n2mZXbQt3MwR5ZbQU432eag71grX
-    .shell  # https://mainnet-tezos.giganode.io/ (mainnet)
+    .shell  # https://rpc.mavryk.network/ (mainnet)
     .address  # KT1REEb5VxWRjcHm5GzDMwErMmNFftsE5Gpf
     .block_id  # head
     .path  # /ledger
@@ -640,7 +639,7 @@ We can do the same using special entrypoint ``balance_of``. Let's give a look at
 
     Properties
     .key  # mv1LDPE2n2mZXbQt3MwR5ZbQU432eag71grX
-    .shell  # https://mainnet-tezos.giganode.io/ (mainnet)
+    .shell  # https://rpc.mavryk.network/ (mainnet)
     .address  # KT1REEb5VxWRjcHm5GzDMwErMmNFftsE5Gpf
     .block_id  # head
     .entrypoint  # balance_of
@@ -708,5 +707,5 @@ The context object holds general functions for retriving data about a contract/a
    ['get_amount', 'get_amount_expr', 'get_balance', 'get_balance_expr', 'get_big_map_diff', 'get_big_map_value', 'get_big_maps_expr', 'get_chain_id', 'get_chain_id_expr', 'get_code_expr', 'get_counter', 'get_counter_offset', 'get_dummy_address', 'get_dummy_chain_id', 'get_dummy_key_hash', 'get_dummy_lambda', 'get_dummy_public_key', 'get_dummy_signature', 'get_input_expr', 'get_level', 'get_now', 'get_now_expr', 'get_operations_ttl', 'get_originated_address', 'get_output_expr', 'get_parameter_expr', 'get_sapling_state_diff', 'get_self_address', 'get_self_expr', 'get_sender', 'get_sender_expr', 'get_source', 'get_source_expr', 'get_storage_expr', 'get_tmp_big_map_id', 'get_tmp_sapling_state_id', 'get_total_voting_power', 'get_voting_power']
 
    >>> kolibri_oven_balance = kolibri_oven.context.get_balance()
-   >>> print("Kolibri oven {} has XTZ balance {}".format(kolibri_oven.address, kolibri_oven_balance / 1e6))
-   Kolibri oven KT1KH3wH4sneEevPVW7AACiVKMjhTvmXLSK6 has XTZ balance 191.869689
+   >>> print("Kolibri oven {} has MVRK balance {}".format(kolibri_oven.address, kolibri_oven_balance / 1e6))
+   Kolibri oven KT1KH3wH4sneEevPVW7AACiVKMjhTvmXLSK6 has MVRK balance 191.869689
