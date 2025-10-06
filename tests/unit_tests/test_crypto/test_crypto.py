@@ -1,6 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
+import pytest
 from mnemonic import Mnemonic
 from parameterized import parameterized  # type: ignore
 
@@ -10,18 +11,18 @@ from pymavryk.crypto.key import Key
 class TestCrypto(TestCase):
     """
     Test data generation:
-    ./octez-client gen keys test_ed25519 -s ed25519 --force (--encrypted)
-    ./octez-client gen keys test_secp256k1 -s secp256k1 --force (--encrypted)
-    ./octez-client gen keys test_p256 -s p256 --force (--encrypted)
-    ./octez-client show address test_ed25519 -S
-    ./octez-client show address test_secp256k1 -S
-    ./octez-client show address test_p256 -S
-    ./octez-client sign bytes 0x74657374 for test_ed25519
-    ./octez-client sign bytes 0x74657374 for test_secp256k1
-    ./octez-client sign bytes 0x74657374 for test_p256
+    ./mavkit-client gen keys test_ed25519 -s ed25519 --force (--encrypted)
+    ./mavkit-client gen keys test_secp256k1 -s secp256k1 --force (--encrypted)
+    ./mavkit-client gen keys test_p256 -s p256 --force (--encrypted)
+    ./mavkit-client show address test_ed25519 -S
+    ./mavkit-client show address test_secp256k1 -S
+    ./mavkit-client show address test_p256 -S
+    ./mavkit-client sign bytes 0x74657374 for test_ed25519
+    ./mavkit-client sign bytes 0x74657374 for test_secp256k1
+    ./mavkit-client sign bytes 0x74657374 for test_p256
 
     Issues:
-    * `octez-client sign bytes` does not support P256 curve
+    * `mavkit-client sign bytes` does not support P256 curve
     """
 
     @parameterized.expand(
@@ -51,18 +52,29 @@ class TestCrypto(TestCase):
                 'p2pk66yEDuRC5RLHpVj8hvAS5fr8HnU2YsLvFNdwQoW3jH8WUynMwGG',
                 'mv3CPnkuqJMKQzbB4z5ubwP18BXBYXBheM56',
             ),
+            (
+                'BLsk1ijYmTDL6hfUvrFCqgwbetg6FTpHLbzPDKLAfP9tB9Cej8dME5',
+                'BLpk1q8T9TqRSNTacJU1WvTVtj62LZ8WZtGzZ3tQoQANzoXHwAPtxpJCY79TfoNu2m9N6RbFfh7s',
+                'mv4SpAYtPZMDa55PczcxEnMnmu9fURPbnkiA',
+            ),
+            (
+                'BLsk1X2dnEkx4KemkR5Q5j1agrstAfZxX1pXUVDLUCzg6bQfTXkv5u',
+                'BLpk1mN7zNwSvC7KLkhJwUuWm4riPqtpCXDqT662Ffob3Vo3LcmCTfnkzo5LGFKG24L9xG3d1SeW',
+                'mv4Z7PLTkYqv9aTar8YsYQugUykuM9Dhyqwg',
+            ),
         ]
     )
     def test_derive_key_data(self, sk, pk, pkh):
         public_key = Key.from_encoded_key(pk)
-        self.assertFalse(public_key.is_secret)
-        self.assertEqual(pk, public_key.public_key())
-        self.assertEqual(pkh, public_key.public_key_hash())
+        assert not public_key.is_secret
+        assert pk == public_key.public_key()
+        assert pkh == public_key.public_key_hash()
 
         secret_key = Key.from_encoded_key(sk)
-        self.assertTrue(secret_key.is_secret)
-        self.assertEqual(pk, secret_key.public_key())
-        self.assertEqual(sk, secret_key.secret_key())
+        assert secret_key.is_secret
+        assert sk == secret_key.secret_key()
+        assert pk == secret_key.public_key()
+        assert pkh == secret_key.public_key_hash()
 
     @parameterized.expand(
         [
@@ -88,25 +100,39 @@ class TestCrypto(TestCase):
                 '027a06a770ad828485977947451e23e99f5040ead0f09ef89f58be2583640edcb1e295d0cb000005085e',
                 'sigQVTY9CkYw8qL6Xa7QWestkLSdtPv6HZ4ToSMHDcRot3BwRGwZhSwXd9jJwKkDvvotTLSNWQdUqiDSfXuCNUfjbEaY2j6j',
             ),
+            (
+                'BLsk2DidLEXYjL5PvteqHgsve5LoJfZVqTQyKU9XsyXdEpoAh6k8D8',
+                b'bls12_381 verify external signature',
+                'BLsigAGt3Pao4WqsXMpw9JkXnrEyBEGSepTkKFc5gpW8cgLqYZsEiMBXFESJ8HBs9F5JSAeUyuZRyHnDquCAGWc2MEWQBktotL75oEkdaZ351U1HEzrH7LTfXCtQKivTxqgXfi7hf2xxih',
+            ),
         ]
     )
     def test_verify_ext_signatures(self, pk, msg, sig):
         key = Key.from_encoded_key(pk)
         key.verify(sig, msg)
-        self.assertRaises(ValueError, key.verify, sig, b'fake')
+
+        fake_message = b'fake'
+        assert msg != fake_message
+        with pytest.raises(ValueError):
+            key.verify(sig, fake_message)
 
     @parameterized.expand(
         [
             ('edsk3nM41ygNfSxVU4w1uAW3G9EnTQEB5rjojeZedLTGmiGRcierVv', '0xdeadbeaf'),
             ('spsk1zkqrmst1yg2c4xi3crWcZPqgdc9KtPtb9SAZWYHAdiQzdHy7j', b'hello'),
             ('p2sk3PM77YMR99AvD3fSSxeLChMdiQ6kkEzqoPuSwQqhPsh29irGLC', b'test'),
+            ('BLsk2cZcs2umUhDAQVUxqZnEnaj5p7W7TeHh9dc6F1E3j1bnfRJtaR', b'bls12_381 sign and verify'),
         ]
     )
     def test_sign_and_verify(self, sk, msg):
         key = Key.from_encoded_key(sk)
         sig = key.sign(msg)
         key.verify(sig, msg)
-        self.assertRaises(ValueError, key.verify, sig, b'fake')
+
+        fake_message = b'fake'
+        assert msg != fake_message
+        with pytest.raises(ValueError):
+            key.verify(sig, fake_message)
 
     @parameterized.expand(
         [
@@ -120,16 +146,21 @@ class TestCrypto(TestCase):
                 b'test',
                 'spsig1RriZtYADyRhyNoQMa6AiPuJJ7AUDcrxWZfgqexzgANqMv4nXs6qsXDoXcoChBgmCcn2t7Y3EkJaVRuAmNh2cDDxWTdmsz',
             ),
+            (
+                'BLsk2DidLEXYjL5PvteqHgsve5LoJfZVqTQyKU9XsyXdEpoAh6k8D8',
+                b'bls12_381 deterministic signatures',
+                'BLsigBTk7yQU5YriqxMPQNXQqAUJKaQDz2LGZdXsBmBWVNrBvVTWXKqCq5Fgz7bJe16wvTzG7wJV23RefadzWgrNz5LZRCxpGoeGXbzABJqtnYzC1RKbQ4EatpraXtYKPFcRfdxN9maGaC',
+            ),
         ]
     )
-    def test_deterministic_signatures(self, sk, msg, sig):
+    def test_deterministic_signatures(self, sk, msg, expected_signature):
         """
         See RFC6979 for explanation
         https://tools.ietf.org/html/rfc6979#section-3.2
         """
         key = Key.from_encoded_key(sk)
         signature = key.sign(msg)
-        self.assertEqual(sig, signature)
+        assert signature == expected_signature
 
     @parameterized.expand(
         [
@@ -151,14 +182,20 @@ class TestCrypto(TestCase):
                 b'"\xf8\x0e \x0f]hc',
                 'p2pk68Ky2h9UZZ4jUYws8mU8Cazhu4H1LdK22wD8HgDPRSvsJPBDtJ7',
             ),
+            (
+                'BLesk1a3e2vNGbbPV5rFRHZZCHvZEvvtGP5Puer4yRfRVLR8E1xVyk5owiUeudZcaa31mGDmvbr9LH6ZPTUdi66z',
+                'qqq',
+                b'q\xc1\x1e\xd4\x8f\xeby\xc8',
+                'BLpk1kuaZeC775wf3VtwYXEipCVK1jkPdu7xcroNCw1kKci7ncaTRQ1ehCCpdiye1BugTMjWx1Xx',
+            ),
         ]
     )
     def test_encrypted_keys(self, sk, passphrase, salt, pk):
         key = Key.from_encoded_key(sk, passphrase=passphrase)
-        self.assertEqual(pk, key.public_key())
+        assert pk == key.public_key()
 
         with patch('pymavryk.crypto.key.pysodium.randombytes', return_value=salt):
-            self.assertEqual(sk, key.secret_key(passphrase))
+            assert sk == key.secret_key(passphrase)
 
     @parameterized.expand(
         [

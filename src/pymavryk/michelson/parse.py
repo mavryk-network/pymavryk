@@ -195,8 +195,7 @@ class MichelsonParser:
         p[0] = p[2]
 
     @doc('empty :')
-    def p_empty(self, p):
-        ...
+    def p_empty(self, p): ...
 
     def p_error(self, p):
         raise MichelsonParserError(p)

@@ -1,12 +1,15 @@
 # PyMavryk
 
-[![PyPI version](https://badge.fury.io/py/pytezos.svg?)](https://badge.fury.io/py/pytezos)
-[![Tests](https://github.com/mavryk-network/pymavryk/workflows/Tests/badge.svg?)](https://github.com/mavryk-network/pymavryk/actions?query=workflow%3ATests)
-[![Docker images](https://github.com/mavryk-network/pymavryk/workflows/Dockerhub/badge.svg?)](https://hub.docker.com/r/mavrykdynamics/pymavryk)
-[![Made With](https://img.shields.io/badge/made%20with-python-blue.svg?)](ttps://www.python.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/baking-bad/pytezos/master?filepath=michelson_quickstart.ipynb)
-
+[![Twitter](https://badgen.net/badge/icon/TezosBakingBad?icon=twitter&label=)](https://twitter.com/TezosBakingBad)
+[![Monthly downloads](https://static.pepy.tech/badge/pytezos/month)](https://pepy.tech/project/pytezos)
+[![GitHub stars](https://img.shields.io/github/stars/mavryk-network/pymavryk?color=2c2c2c&style=plain)](https://github.com/mavryk-network/pymavryk)
+[![Python Version](https://img.shields.io/pypi/pyversions/pytezos?color=2c2c2c)](https://www.python.org)
+<br>
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mavryk-network/pymavryk/master?filepath=michelson_quickstart.ipynb)
+[![License: MIT](https://img.shields.io/github/license/mavryk-network/pymavryk?color=2c2c2c)](https://github.com/mavryk-network/pymavryk/blob/next/LICENSE)
+[![Latest release](https://img.shields.io/github/v/release/mavryk-network/pymavryk?label=version&color=2c2c2c)](https://github.com/mavryk-network/pymavryk/releases)
+[![GitHub issues](https://img.shields.io/github/issues/mavryk-network/pymavryk?color=2c2c2c)](https://github.com/mavryk-network/pymavryk/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/mavryk-network/pymavryk?color=2c2c2c)](https://github.com/mavryk-network/pymavryk/pulls)
 
 * RPC query engine
 * Cryptography
@@ -21,10 +24,12 @@
 * Deploying contracts (+ GitHub integration)
 
 #### Michelson REPL
+
 * Builtin interpreter (reimplemented)
 * Set of extra helpers (stack visualization, blockchain context mocking)
 
 #### Michelson Jupyter kernel
+
 * Custom interpreter with runtime type checker
 * Syntax highlighting, autocomplete with `Tab`
 * In-place docstrings with `Shift+Tab`
@@ -33,48 +38,55 @@
 * Debug helpers
 
 #### Michelson integration testing framework
+
 * Writing integration tests using `unittest` package
 * Simulating contract execution using remote intepreter (via RPC) or builtin one
 
-
 ## Installation
 
-Make sure you have Python 3.8+ installed and set as default in the system.  
+Make sure you have Python 3.8 to 3.12 installed and set as default in the system.  
 
 You also need to install cryptographic packages before installing the library/building the project:
 
-#### Linux
+### Linux
 
-##### Ubuntu, Debian and other apt-based distributions
+#### Ubuntu, Debian and other apt-based distributions
+
 ```shell
-$ sudo apt install libsodium-dev libsecp256k1-dev libgmp-dev pkg-config
+$ sudo apt install libsodium-dev libgmp-dev pkg-config
 ```
 
-##### Arch Linux
+#### Arch Linux
+
 ```shell
-$ sudo pacman -Syu --needed libsodium libsecp256k1 gmp
+$ sudo pacman -Syu --needed libsodium gmp
 ```
-#### MacOS
+
+### MacOS
 
 [Homebrew](https://brew.sh/) needs to be installed.
+
 ```shell
-$ brew tap cuber/homebrew-libsecp256k1
-$ brew install libsodium libsecp256k1 gmp pkg-config
+$ brew install libsodium gmp pkg-config
 ```
 
-##### M1 (ARM)
+#### M1 (ARM)
 
-In case `secp256k1` or `gmp` cannot find either include or lib paths, try explicitly set environment vars:
-```
-CFLAGS="-I/opt/homebrew/Cellar/gmp/6.2.1_1/include/ -L/opt/homebrew/Cellar/gmp/6.2.1_1/lib/" LIB_DIR="/opt/homebrew/Cellar/libsecp256k1/0.1/lib" INCLUDE_DIR=/opt/homebrew/Cellar/libsecp256k1/0.1/include pip3 install --user pymavryk
+In case `libsodium` or `gmp` cannot find either include or lib paths, try explicitly set environment vars:
+
+```shell
+export CFLAGS="-I/opt/homebrew/Cellar/gmp/6.2.1_1/include/ -L/opt/homebrew/Cellar/gmp/6.2.1_1/lib/"
+export DYLD_LIBRARY_PATH=/opt/homebrew/lib/
+pip3 install --user pymavryk
 ```
 
 For running tests you might also need to export `LD_LIBRARY_PATH`:
-```
+
+```shell
 export LD_LIBRARY_PATH=/opt/homebrew/lib/
 ```
 
-#### Windows
+### Windows
 
 The recommended way is to use WSL and then follow the instructions for Linux,
 but if you feel lucky you can try to install natively:
@@ -95,12 +107,14 @@ $ pip install pymavryk
 ### [Google Colab](https://colab.research.google.com)
 
 `````python
->>> !apt install libsodium-dev libsecp256k1-dev libgmp-dev
+>>> !apt install libsodium-dev libgmp-dev
 >>> !pip install pymavryk
 `````
 
 ### Docker container
+
 Verified & minified images for CI/CD https://hub.docker.com/r/mavrykdynamics/pymavryk/tags
+
 ```shell
 $ # 1. Use image from registry
 $ docker pull mavrykdynamics/pymavryk
@@ -113,27 +127,30 @@ $ docker-compose up -d notebook
 ### Building from sources
 
 Requirements:
-* Python 3.8+
-* libsodium, libsecp256k1, gmp
+
+* Python 3.8 to 3.12
+* libsodium, coincurve, gmp
 * make
 
 ```shell
 $ # prepare environment
 $ make install
 # # run full CI with tests
-$ make
+$ make all
 ```
 
 ## Quick start
-Read [quick start guide](https://pymavryk.mavryk.org/quick_start.html)  
+
+Read [quick start guide](https://pymavryk.org/quick_start.html)  
 Learn how to [enable Jupyter with Michelson](./src/michelson_kernel/README.md)
 
 ## API reference
-Check out a complete [API reference](https://pymavryk.mavryk.org/contents.html)
+
+Check out a complete [API reference](https://pymavryk.org/contents.html)
 
 ### Inline documentation
-If you are working in Jupyter/Google Colab or any other interactive console, 
-you can display documentation for a particular class/method:
+
+If you are working in Jupyter/Google Colab or any other interactive console, you can display documentation for a particular class/method:
 
 ```python
 >>> from pymavryk import pymavryk
@@ -155,10 +172,13 @@ https://medium.com/tezoscommons/preparing-for-the-tezos-hackathon-with-baking-ba
 https://medium.com/tezoscommons/testing-michelson-contracts-with-pytezos-513718499e93
 
 ### Contact
+
 * Telegram chat: [@baking_bad_chat](https://t.me/baking_bad_chat)
 * Slack channel: [#baking-bad](https://tezos-dev.slack.com/archives/CV5NX7F2L)
 
 ## Credits
-* The project was initially started by Arthur Breitman, now it's maintained by Mavryk Dynamics team, based on the forked of Baking Bad.
+
+* The project was initially started by Arthur Breitman, now it's maintained by Baking Bad team.
+* Baking Bad is supported by Tezos Foundation
 * Michelson test set from the Mavryk repo is used to ensure the interpreter workability
 * Michelson structured documentation by Nomadic Labs is used for inline help

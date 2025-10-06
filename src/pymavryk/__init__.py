@@ -10,6 +10,8 @@ Just type:
 And follow the interactive documentation.
 """
 
+import importlib.metadata
+
 from pymavryk.client import PyMavrykClient
 from pymavryk.contract.interface import Contract
 from pymavryk.contract.interface import ContractInterface
@@ -24,6 +26,6 @@ from pymavryk.michelson.types.base import MichelsonType
 from pymavryk.michelson.types.base import Undefined
 from pymavryk.michelson.types.core import Unit
 
-__version__ = '3.10.3'
+__version__ = importlib.metadata.version('pymavryk')
 
 pymavryk = PyMavrykClient()

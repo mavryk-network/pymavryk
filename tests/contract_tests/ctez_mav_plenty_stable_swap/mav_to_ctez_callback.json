@@ -1,6 +1,6 @@
 {
   "parameters": {
-    "entrypoint": "ctez_to_tez_callback",
+    "entrypoint": "mav_to_ctez_callback",
     "value": {
       "int": "300695143834029"
     }
@@ -38,7 +38,7 @@
         "prim": "Pair",
         "args": [
           {
-            "int": "20001543628"
+            "int": "19986827323"
           },
           {
             "bytes": "0157006fcca7770ededb7fc644a1a354f7ebbdae1800"
@@ -52,7 +52,7 @@
         "bytes": "013463d7aff77ae4d127b2740650998919b2b5535700"
       },
       {
-        "int": "41373385577"
+        "int": "41363624975"
       }
     ],
     {
@@ -89,7 +89,7 @@
           "prim": "False"
         },
         {
-          "int": "21395340375"
+          "int": "21400962530"
         }
       ]
     },

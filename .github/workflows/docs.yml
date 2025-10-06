@@ -19,19 +19,17 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install poetry
         run: pipx install poetry
 
-      - name: Configure poetry
-        run: poetry config installer.modern-installation false
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
-          cache: "poetry"
+          python-version: "3.12"
+          # FIXME:
+          # cache: 'poetry'
 
       - name: Install binary dependencies
         run: OSTYPE=$OSTYPE make install-deps

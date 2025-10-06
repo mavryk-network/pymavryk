@@ -108,7 +108,7 @@ class ContractInterface(ContextMixin):
         :param context: optional execution context
         :rtype: ContractInterface
         """
-        res = requests.get(url)
+        res = requests.get(url, timeout=60)
         if res.status_code != 200:
             raise ValueError(f'cannot fetch `{url} {res.status_code}`', res.text)
         return ContractInterface.from_michelson(res.text, context)
@@ -242,7 +242,7 @@ class ContractInterface(ContextMixin):
         Also, if address is undefined you can specify RPC endpoint, and private key.
 
         :param shell: one of 'mainnet', '***net', or RPC node uri, or instance of :class:`pymavryk.rpc.shell.ShellQuery`
-        :param key: base58 encoded key, path to the faucet file, alias from octez-client, or instance of `Key`
+        :param key: base58 encoded key, path to the faucet file, alias from mavkit-client, or instance of `Key`
         :param block_id: block height / hash / offset to use, default is `head`
         :param mode: whether to use `readable` or `optimized` encoding for parameters/storage/other
         :param ipfs_gateway: override IPFS gateway URI

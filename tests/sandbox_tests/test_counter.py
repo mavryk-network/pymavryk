@@ -1,4 +1,5 @@
 import logging
+from unittest import skip
 
 from pymavryk.rpc.errors import RpcError
 from pymavryk.sandbox.node import SandboxedNodeTestCase
@@ -8,6 +9,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class TransactionCounterTestCase(SandboxedNodeTestCase):
+    @skip('Not applicable in Boreasnet?')
     def test_1_send_multiple_transactions_non_batched(self) -> None:
         client = self.client
         # Only one manager operation per manager per block allowed

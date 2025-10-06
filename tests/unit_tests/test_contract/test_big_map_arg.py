@@ -23,7 +23,7 @@ class BigMapArgTest(TestCase):
         res = ci.call(123).interpret(storage={1: 1})  # FIXME: this should fail with something like "Big_map not found"
         self.assertEqual({}, res.storage)
 
-    #TODO: Fix when Mavryk mainnet is deployed
+    # TODO: Fix when Mavryk mainnet is deployed
     def test_big_map_composite_key(self):
         ...
         # ct = ContractInterface.from_file(join(dirname(__file__), 'contracts', 'big_map_composite_key.tz'))

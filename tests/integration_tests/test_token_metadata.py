@@ -3,7 +3,8 @@ from unittest import skip
 
 from pymavryk import pymavryk
 
-#TODO: Fix when Mavryk mainnet is deployed
+
+# TODO: Fix when Mavryk mainnet is deployed
 class TestTokenMetadata(TestCase):
     def test_from_storage(self):
         ...

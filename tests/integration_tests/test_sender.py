@@ -19,7 +19,7 @@ sender = 'KT1WhouvVKZFH94VXj9pa8v4szvfrBwXoBUj'
 class SenderContractTest(TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.ci = ContractInterface.from_michelson(code).using(shell='https://basenet-baking-node.mavryk.network')
+        cls.ci = ContractInterface.from_michelson(code).using(shell='https://atlasnet.rpc.mavryk.network')
 
     def test_sender(self):
         res = self.ci.default().run_code(storage=initial, source=source, sender=sender)

@@ -400,7 +400,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_TEZ_TRANSFER"
+                                        "string": "MP_MAV_TRANSFER"
                                       }
                                     ]
                                   },
@@ -1189,7 +1189,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_WRONG_TEZ_AMOUNT"
+                                        "string": "MP_WRONG_MAV_AMOUNT"
                                       }
                                     ]
                                   },
@@ -2565,7 +2565,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_TEZ_TRANSFER"
+                                        "string": "MP_MAV_TRANSFER"
                                       }
                                     ]
                                   },
@@ -2719,7 +2719,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_TEZ_TRANSFER"
+                                        "string": "MP_MAV_TRANSFER"
                                       }
                                     ]
                                   },
@@ -2823,7 +2823,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_TEZ_TRANSFER"
+                                        "string": "MP_MAV_TRANSFER"
                                       }
                                     ]
                                   },
@@ -3497,7 +3497,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_TEZ_TRANSFER"
+                                        "string": "MP_MAV_TRANSFER"
                                       }
                                     ]
                                   },
@@ -3689,7 +3689,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "MP_TEZ_TRANSFER"
+                                        "string": "MP_MAV_TRANSFER"
                                       }
                                     ]
                                   },

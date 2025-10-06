@@ -4,7 +4,7 @@ from unittest import TestCase
 from pymavryk.crypto.hash import block_payload_hash
 from pymavryk.crypto.hash import operation_list_list_hash
 
-# https://rpc.tzkt.io/mainnet/chains/main/blocks/2223648
+# https://rpc.mavryk.network/chains/main/blocks/2223648
 operation_hashes_llo = 'LLoaQ8vjCwYooVy6nRSUP9VRBk1YHaHgqWrHw3J9j4VmEvVZCbaYB'
 operation_hashes = [
     [

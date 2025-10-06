@@ -47,7 +47,7 @@ class LambdaExecTestCase(TestCase):
         cls.maxDiff = None
         cls.ct = ContractInterface.from_michelson(code)
 
-    #TODO: Fix when Mavryk mainnet is deployed
+    # TODO: Fix when Mavryk mainnet is deployed
     def test_simplest(self):
         ...
         # res = self.ct.default(bob).interpret()

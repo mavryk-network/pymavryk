@@ -23,6 +23,8 @@ from pymavryk.rpc.kind import validation_passes
 from pymavryk.sandbox.parameters import protocol_version
 from pymavryk.sandbox.parameters import sandbox_params
 
+bson.encoder.encoders[int] = bson.encoder.encoders[float]
+
 
 class BlockHeader(ContextMixin):
     """Representation of block creation call"""
@@ -98,7 +100,7 @@ class BlockHeader(ContextMixin):
         pending_operations = context.shell.mempool.pending_operations()  # type: ignore
         operations: List[List[Dict[str, Any]]] = [[], [], [], []]
 
-        for opg in pending_operations['applied']:
+        for opg in pending_operations['validated']:
             validation_pass = validation_passes[opg['contents'][0]['kind']]
             if validation_pass == 3 and sum(map(lambda x: int(x['fee']), opg['contents'])) < min_fee:
                 continue
@@ -110,6 +112,7 @@ class BlockHeader(ContextMixin):
             "payload_hash": "vh1g87ZG6scSYxKhspAUzprQVuLAyoa5qMBKcUfjgnQGnFb3dJcG",  # dummy payload (zeroes)
             "payload_round": 0,
             "liquidity_baking_toggle_vote": "off",
+            "adaptive_issuance_vote": "off",
         }
 
         return BlockHeader(
@@ -259,7 +262,7 @@ class BlockHeader(ContextMixin):
         """
         chain_watermark = bytes.fromhex(self.shell.chains.main.watermark())
         proto = protocol_version.get(self.protocol_data['protocol'], 0)
-        if proto >= 12:  # since Ithaca
+        if proto >= 1:
             watermark = b'\x11' + chain_watermark
         else:
             watermark = b'\x01' + chain_watermark

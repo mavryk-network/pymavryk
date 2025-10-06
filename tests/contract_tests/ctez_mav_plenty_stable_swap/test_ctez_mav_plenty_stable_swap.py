@@ -14,7 +14,7 @@ from pymavryk.michelson.types.base import MichelsonType
 folder = 'typed_minter'
 
 
-class MainnetContractTestCaseCTEZ_TEZ_PNLP_FARM(TestCase):
+class MainnetContractTestCaseCTEZ_mav_PLENTY_STABLE_SWAP(TestCase):
     @classmethod
     def setUpClass(cls):
         with open(join(dirname(__file__), f'', '__script__.json')) as f:
@@ -29,11 +29,11 @@ class MainnetContractTestCaseCTEZ_TEZ_PNLP_FARM(TestCase):
         cls.entrypoints = entrypoints
         # cls.maxDiff = None
 
-    def test_parameter_type_ctez_tez_pnlp_farm(self):
+    def test_parameter_type_ctez_mav_plenty_stable_swap(self):
         type_expr = self.program.parameter.as_micheline_expr()
         self.assertEqual(get_script_section(self.script, name='parameter'), type_expr, 'micheline -> type -> micheline')
 
-    def test_entrypoints_ctez_tez_pnlp_farm(self):
+    def test_entrypoints_ctez_mav_plenty_stable_swap(self):
         ep_types = self.program.parameter.list_entrypoints()
         self.assertEqual(len(self.entrypoints['entrypoints']) + 1, len(ep_types))
         for name, ep_type in ep_types.items():
@@ -41,11 +41,11 @@ class MainnetContractTestCaseCTEZ_TEZ_PNLP_FARM(TestCase):
                 expected_type = MichelsonType.match(self.entrypoints['entrypoints'][name])
                 expected_type.assert_type_equal(ep_type)
 
-    def test_storage_type_ctez_tez_pnlp_farm(self):
+    def test_storage_type_ctez_mav_plenty_stable_swap(self):
         type_expr = self.program.storage.as_micheline_expr()
         self.assertEqual(get_script_section(self.script, name='storage'), type_expr, 'micheline -> type -> micheline')
 
-    def test_storage_encoding_ctez_tez_pnlp_farm(self):
+    def test_storage_encoding_ctez_mav_plenty_stable_swap(self):
         val = self.program.storage.from_micheline_value(self.script['storage'])
         val_expr = val.to_micheline_value(mode='optimized')
         self.assertEqual(self.script['storage'], val_expr, 'micheline -> value -> micheline')

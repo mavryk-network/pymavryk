@@ -1,1 +1,3 @@
-__version__ = '3.10.3'
+import importlib.metadata
+
+__version__ = importlib.metadata.version('pymavryk')

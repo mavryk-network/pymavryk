@@ -1,8 +1,11 @@
 from unittest import TestCase
 
+import pytest
+
 from pymavryk import pymavryk
 
-#TODO: Fix when Mavryk mainnet is deployed
+
+# TODO: Fix when Mavryk mainnet is deployed
 class TestMetadata(TestCase):
     def test_usds_all_tokens_view(self):
         ...
@@ -10,6 +13,7 @@ class TestMetadata(TestCase):
         # res = usds.metadata.allTokens().storage_view()
         # self.assertEqual([0], res)
 
+    @pytest.mark.skip
     def test_domains(self):
         ...
         # td = pymavryk.using('mainnet').contract('KT1GBZmSxmnKJXGMdMLbugPfLyUPmuLSMwKS')

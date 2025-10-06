@@ -322,8 +322,7 @@ def get_script_section(
     cls: None,
     name: str,
     required: Literal[True],
-) -> Micheline:
-    ...
+) -> Micheline: ...
 
 
 @overload
@@ -332,8 +331,7 @@ def get_script_section(
     cls: None,
     name: str,
     required: Literal[False],
-) -> Optional[Micheline]:
-    ...
+) -> Optional[Micheline]: ...
 
 
 @overload
@@ -342,8 +340,7 @@ def get_script_section(
     cls: Type[MichelineT],
     name: None,
     required: Literal[True],
-) -> MichelineT:
-    ...
+) -> MichelineT: ...
 
 
 @overload
@@ -352,8 +349,7 @@ def get_script_section(
     cls: Type[MichelineT],
     name: None,
     required: Literal[False],
-) -> Optional[MichelineT]:
-    ...
+) -> Optional[MichelineT]: ...
 
 
 def get_script_section(
@@ -380,8 +376,7 @@ def get_script_sections(
     sequence: Type[MichelineSequence],
     cls: None,
     name: str,
-) -> List[MichelineT]:
-    ...
+) -> List[MichelineT]: ...
 
 
 @overload
@@ -389,8 +384,7 @@ def get_script_sections(
     sequence: Type[MichelineSequence],
     cls: Type[MichelineT],
     name: None,
-) -> List[MichelineT]:
-    ...
+) -> List[MichelineT]: ...
 
 
 def get_script_sections(sequence, cls=None, name=None):

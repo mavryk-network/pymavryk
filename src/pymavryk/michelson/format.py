@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from datetime import timezone
 
 from pymavryk.logging import logger
 
@@ -11,7 +12,7 @@ def format_timestamp(timestamp: int) -> str:
 
     :param timestamp: Unix timestamp (seconds)
     """
-    dt = datetime.utcfromtimestamp(timestamp)
+    dt = datetime.fromtimestamp(timestamp, timezone.utc)
     return dt.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
@@ -155,7 +156,7 @@ def micheline_to_michelson(data, inline=False, wrap=False) -> str:
     """Converts micheline expression into formatted Michelson source.
 
     :param data: Micheline expression
-    :param inline: produce single line, used for octez-client arguments (False by default)
+    :param inline: produce single line, used for mavkit-client arguments (False by default)
     :param wrap: ensure expression is wrapped in brackets
     """
     try:

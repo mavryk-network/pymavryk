@@ -23,7 +23,7 @@ def format_mumav(value: Optional[Union[int, Decimal]]) -> str:
     return str(value)
 
 
-def format_tez(value: Optional[Union[int, Decimal]]) -> Decimal:
+def format_mav(value: Optional[Union[int, Decimal]]) -> Decimal:
     """Format amount in mav.
 
     :param value: can be None (==0), Decimal (treated as mav), int (treated as mumav)
@@ -153,7 +153,7 @@ class ContentMixin:
         """Submit and/or upvote proposals to amend the protocol.
 
         Can only be submitted during a proposal period.
-        More info https://tezos.gitlab.io/master/whitedoc/voting.html
+        More info https://protocol.mavryk.org/master/whitedoc/voting.html
 
         :param proposals: List of proposal hashes or single proposal hash
         :param source: Public key hash (of the signatory), leave None for autocomplete
@@ -177,7 +177,7 @@ class ContentMixin:
         """Vote for a proposal in a given voting period.
 
         Can only be submitted during Testing_vote or Promotion_vote periods, and only once per period.
-        More info https://tezos.gitlab.io/master/whitedoc/voting.html
+        More info https://protocol.mavryk.org/master/whitedoc/voting.html
 
         :param proposal: Hash of the proposal
         :param ballot: 'Yay', 'Nay' or 'Pass'
@@ -246,7 +246,7 @@ class ContentMixin:
 
         :param source: Address from which funds will be sent, leave None to use signatory address
         :param destination: Address
-        :param amount: Amount to send in microtez (int) or mav (Decimal) (optional)
+        :param amount: Amount to send in micromav (int) or mav (Decimal) (optional)
         :param counter: Current account counter, leave None for autocomplete
         :param parameters: { "entrypoint": $string, "value": $Micheline expression } (optional)
         :param fee: Leave None for autocomplete

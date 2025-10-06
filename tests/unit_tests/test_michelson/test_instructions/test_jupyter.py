@@ -197,7 +197,7 @@ class JupyterInstructionsTest(TestCase):
 
     @patch('pymavryk.rpc.node.RpcNode.get', Mock(return_value='some_chain_id'))
     def test_reset_value(self):
-        self.context.shell = ShellQuery(RpcNode('https://testnet-tezos.giganode.io/'))
+        self.context.shell = ShellQuery(RpcNode('https://rpc.mavryk.network/'))
         self.context.network = 'testnet'
         self.context.chain_id = 'ch21n1d'
         code = """

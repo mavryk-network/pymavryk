@@ -1,16 +1,8 @@
 {
   "parameters": {
-    "entrypoint": "tez_to_ctez",
+    "entrypoint": "ctez_to_mav_callback",
     "value": {
-      "prim": "Pair",
-      "args": [
-        {
-          "int": "23261727"
-        },
-        {
-          "string": "mv19T6i93sMG3pdxY4NFFLwkCBKT3YuCAnm7"
-        }
-      ]
+      "int": "300695143834029"
     }
   },
   "storage": [
@@ -22,7 +14,7 @@
             "prim": "Pair",
             "args": [
               {
-                "prim": "True"
+                "prim": "False"
               },
               {
                 "bytes": "000020608fc3038e6b2391bab4694186807dd1c6afec"
@@ -46,7 +38,7 @@
         "prim": "Pair",
         "args": [
           {
-            "int": "20010205943"
+            "int": "20001543628"
           },
           {
             "bytes": "0157006fcca7770ededb7fc644a1a354f7ebbdae1800"
@@ -60,7 +52,7 @@
         "bytes": "013463d7aff77ae4d127b2740650998919b2b5535700"
       },
       {
-        "int": "41363624975"
+        "int": "41373385577"
       }
     ],
     {
@@ -70,12 +62,7 @@
           "prim": "Pair",
           "args": [
             {
-              "prim": "Some",
-              "args": [
-                {
-                  "int": "23261727"
-                }
-              ]
+              "prim": "None"
             },
             {
               "prim": "False"
@@ -86,12 +73,7 @@
           "prim": "Pair",
           "args": [
             {
-              "prim": "Some",
-              "args": [
-                {
-                  "bytes": "0000438aa0ed99c9939b86ae8611d1a3da40a270475a"
-                }
-              ]
+              "prim": "None"
             },
             {
               "prim": "None"
@@ -107,17 +89,12 @@
           "prim": "False"
         },
         {
-          "int": "21375962530"
+          "int": "21395340375"
         }
       ]
     },
     {
-      "prim": "Some",
-      "args": [
-        {
-          "int": "25000000"
-        }
-      ]
+      "prim": "None"
     },
     {
       "prim": "None"

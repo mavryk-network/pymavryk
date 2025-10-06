@@ -24,11 +24,9 @@ reserved_entrypoints = {
 
 
 def has_parameters(content: Dict[str, Any]) -> bool:
-    if content.get('parameters'):
-        if content['parameters']['entrypoint'] == 'default' and content['parameters']['value'] == {'prim': 'Unit'}:
-            return False
-        return True
-    return False
+    if not content.get('parameters'):
+        return False
+    return not (content['parameters']['entrypoint'] == 'default' and content['parameters']['value'] == {'prim': 'Unit'})
 
 
 def forge_entrypoint(entrypoint) -> bytes:
@@ -91,7 +89,7 @@ def forge_activate_account(content: Dict[str, Any]) -> bytes:
 
 def forge_reveal(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -102,7 +100,7 @@ def forge_reveal(content: Dict[str, Any]) -> bytes:
 
 def forge_transaction(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -122,7 +120,7 @@ def forge_transaction(content: Dict[str, Any]) -> bytes:
 
 def forge_origination(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -131,7 +129,7 @@ def forge_origination(content: Dict[str, Any]) -> bytes:
 
     if content.get('delegate'):
         res += forge_bool(True)
-        res += forge_address(content['delegate'], tz_only=True)
+        res += forge_address(content['delegate'], mv_only=True)
     else:
         res += forge_bool(False)
 
@@ -142,7 +140,7 @@ def forge_origination(content: Dict[str, Any]) -> bytes:
 
 def forge_delegation(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -150,7 +148,7 @@ def forge_delegation(content: Dict[str, Any]) -> bytes:
 
     if content.get('delegate'):
         res += forge_bool(True)
-        res += forge_address(content['delegate'], tz_only=True)
+        res += forge_address(content['delegate'], mv_only=True)
     else:
         res += forge_bool(False)
 
@@ -186,7 +184,7 @@ def forge_failing_noop(content: Dict[str, Any]) -> bytes:
 
 def forge_register_global_constant(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -197,7 +195,7 @@ def forge_register_global_constant(content: Dict[str, Any]) -> bytes:
 
 def forge_transfer_ticket(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -213,7 +211,7 @@ def forge_transfer_ticket(content: Dict[str, Any]) -> bytes:
 
 def forge_smart_rollup_add_messages(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))
@@ -224,7 +222,7 @@ def forge_smart_rollup_add_messages(content: Dict[str, Any]) -> bytes:
 
 def forge_smart_rollup_execute_outbox_message(content: Dict[str, Any]) -> bytes:
     res = forge_tag(operation_tags[content['kind']])
-    res += forge_address(content['source'], tz_only=True)
+    res += forge_address(content['source'], mv_only=True)
     res += forge_nat(int(content['fee']))
     res += forge_nat(int(content['counter']))
     res += forge_nat(int(content['gas_limit']))

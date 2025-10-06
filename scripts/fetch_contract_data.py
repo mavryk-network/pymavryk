@@ -1,4 +1,5 @@
 """Fetch contract data for tests from BCD and TzKT APIs"""
+
 import json
 import logging
 from os import makedirs
@@ -20,12 +21,12 @@ logger.setLevel(logging.DEBUG)
 from pymavryk.logging import logger
 
 TZKT_API = 'https://api.tzkt.io/v1'
-RPC_API = 'https://mainnet-tezos.giganode.io'
+RPC_API = 'https://rpc.mavryk.network'
 
 
 def _get(url: str, params: Optional[Dict[str, Any]] = None):
     logger.info(f'GET {url}?{"&".join(f"{k}={v}" for k, v in (params or {}).items())}')
-    return requests.get(url, params=params)
+    return requests.get(url, params=params, timeout=60)
 
 
 def write_test_data(path: str, name: str, data: Dict[str, Any]) -> None:

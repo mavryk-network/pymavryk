@@ -17,7 +17,7 @@ from pymavryk.rpc import ShellQuery
 from pymavryk.rpc.errors import RpcError
 
 # NOTE: Built-in key for PyMavryk client, please, use responsibly.
-default_network = 'ghostnet'
+default_network = 'atlasnet'
 default_key = 'edsk33N474hxzA4sKeWVM6iuGNGDpX2mGwHNxEA4UbWS8sW3Ta3NKH'
 default_key_hash = 'mv1VDuhoWLjBMmeM1iTS4g4aapw1Zwkz9ziU'
 
@@ -25,20 +25,18 @@ default_key_hash = 'mv1VDuhoWLjBMmeM1iTS4g4aapw1Zwkz9ziU'
 alice_key = 'edsk3QoqBuvdamxouPhin7swCvkQNgq4jP5KZPbwWNnwdZpSpJiEbq'
 alice_key_hash = 'mv1Hox9jGJg3uSmsv9NTvuK7rMHh25cq44nv'
 
-# NOTE: For octez-node in sandboxed mode
+# NOTE: For mavkit-node in sandboxed mode
 dictator_key = 'edsk31vznjHSSpGExDMHYASz45VZqXN4DPxvsa4hAyY8dHM28cZzp6'
 
 nodes = {
-    'mainnet': ['https://rpc.tzkt.io/mainnet'],
+    'mainnet': ['https://rpc.mavryk.network'],
     'sandbox': ['http://127.0.0.1:8732/'],
     'sandboxnet': ['http://127.0.0.1:8732/'],
     'localhost': ['http://127.0.0.1:8732/'],
-    'ghostnet': ['https://rpc.tzkt.io/ghostnet'],
-    'jakartanet': ['https://rpc.tzkt.io/jakartanet'],
-    'kathmandunet': ['https://rpc.tzkt.io/kathmandunet'],
-    'limanet': ['https://rpc.tzkt.io/limanet'],
-    'mumbainet': ['https://rpc.tzkt.io/mumbainet'],
-    'nairobinet': ['https://rpc.tzkt.io/nairobinet'],
+    'basenet': ['https://basenet.rpc.mavryk.network'],
+    'atlasnet': ['https://atlasnet.rpc.mavryk.network'],
+    'boreasnet': ['https://boreasnet.rpc.mavryk.network'],
+    'cnet': ['https://cnet.rpc.mavryk.network'],
 }
 keys = {
     'alice': alice_key,

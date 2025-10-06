@@ -172,7 +172,7 @@
                         {
                           "prim": "nat",
                           "annots": [
-                            "%tezPool"
+                            "%mavPool"
                           ]
                         }
                       ]
@@ -341,7 +341,7 @@
                             {
                               "prim": "nat",
                               "annots": [
-                                "%minTezBought"
+                                "%minMavBought"
                               ]
                             },
                             {
@@ -354,7 +354,7 @@
                         }
                       ],
                       "annots": [
-                        "%ctez_to_tez"
+                        "%ctez_to_mav"
                       ]
                     },
                     {
@@ -363,7 +363,7 @@
                         {
                           "prim": "nat",
                           "annots": [
-                            "%ctez_to_tez_callback"
+                            "%ctez_to_mav_callback"
                           ]
                         },
                         {
@@ -455,13 +455,13 @@
                             }
                           ],
                           "annots": [
-                            "%tez_to_ctez"
+                            "%mav_to_ctez"
                           ]
                         },
                         {
                           "prim": "nat",
                           "annots": [
-                            "%tez_to_ctez_callback"
+                            "%mav_to_ctez_callback"
                           ]
                         }
                       ]
@@ -3064,7 +3064,7 @@
                             {
                               "prim": "SELF",
                               "annots": [
-                                "%ctez_to_tez_callback"
+                                "%ctez_to_mav_callback"
                               ]
                             },
                             {
@@ -13239,7 +13239,7 @@
                                               "prim": "string"
                                             },
                                             {
-                                              "string": "FlatSwap_Min_Tez_Error"
+                                              "string": "FlatSwap_Min_mav_Error"
                                             }
                                           ]
                                         },
@@ -13328,7 +13328,7 @@
                                               "prim": "string"
                                             },
                                             {
-                                              "string": "FlatSwap_Tez_Bought_Exceeds_Pool"
+                                              "string": "FlatSwap_mav_Bought_Exceeds_Pool"
                                             }
                                           ]
                                         },
@@ -14918,7 +14918,7 @@
                                                       {
                                                         "prim": "unit",
                                                         "annots": [
-                                                          "%tez"
+                                                          "%mav"
                                                         ]
                                                       }
                                                     ]
@@ -15471,7 +15471,7 @@
                                               "prim": "string"
                                             },
                                             {
-                                              "string": "FlatSwap_Min_Tez_Error"
+                                              "string": "FlatSwap_Min_mav_Error"
                                             }
                                           ]
                                         },
@@ -15642,7 +15642,7 @@
                                               "prim": "string"
                                             },
                                             {
-                                              "string": "FlatSwap_Tez_Bought_Exceeds_Pool"
+                                              "string": "FlatSwap_mav_Bought_Exceeds_Pool"
                                             }
                                           ]
                                         },
@@ -16630,7 +16630,7 @@
                                   {
                                     "prim": "SELF",
                                     "annots": [
-                                      "%tez_to_ctez_callback"
+                                      "%mav_to_ctez_callback"
                                     ]
                                   },
                                   {
@@ -27831,7 +27831,7 @@
             {
               "prim": "nat",
               "annots": [
-                "%tezPool"
+                "%mavPool"
               ]
             }
           ]
