@@ -13,4 +13,5 @@ jobs:
         uses: machine-learning-apps/repo2docker-action@0.2
         with:
           NO_PUSH: true
+          IMAGE_NAME: ${{ toLower(format('{0}/{1}', github.repository_owner, github.event.repository.name)) }}
           MYBINDERORG_TAG: ${{ github.event.ref }}
