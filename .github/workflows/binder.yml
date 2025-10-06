@@ -9,6 +9,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: checkout files in repo
+        uses: actions/checkout@v4
       - name: Compute lowercase image name
         id: imagename
         run: echo "lower=$(echo '${{ github.repository_owner }}/${{ github.event.repository.name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
@@ -17,5 +19,5 @@ jobs:
         with:
           NO_PUSH: true
           IMAGE_NAME: ${{ steps.imagename.outputs.lower }}
-          TARGET_REPO_DIR: binder
+          REPO2DOCKER_ARGS: --subdir=binder
           MYBINDERORG_TAG: ${{ github.event.ref }}
