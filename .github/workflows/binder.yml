@@ -9,9 +9,12 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Compute lowercase image name
+        id: imagename
+        run: echo "lower=$(echo '${{ github.repository_owner }}/${{ github.event.repository.name }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
       - name: cache binder build on mybinder.org
         uses: machine-learning-apps/repo2docker-action@0.2
         with:
           NO_PUSH: true
-          IMAGE_NAME: ${{ toLower(format('{0}/{1}', github.repository_owner, github.event.repository.name)) }}
+          IMAGE_NAME: ${{ steps.imagename.outputs.lower }}
           MYBINDERORG_TAG: ${{ github.event.ref }}
