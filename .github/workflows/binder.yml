@@ -17,4 +17,5 @@ jobs:
         with:
           NO_PUSH: true
           IMAGE_NAME: ${{ steps.imagename.outputs.lower }}
+          SUBDIR: binder
           MYBINDERORG_TAG: ${{ github.event.ref }}
