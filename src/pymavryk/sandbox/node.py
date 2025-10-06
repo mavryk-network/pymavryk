@@ -13,24 +13,24 @@ from typing import List
 from typing import Optional
 
 import requests.exceptions
-from testcontainers.core.container import Container  # type: ignore
-from testcontainers.core.docker_client import DockerClient  # type: ignore
-from testcontainers.core.generic import DockerContainer  # type: ignore
+from testcontainers.core.container import DockerContainer  # type: ignore[import-untyped]
+from testcontainers.core.docker_client import DockerClient  # type: ignore[import-untyped]
 
 from pymavryk.client import PyMavrykClient
 from pymavryk.operation.group import OperationGroup
 from pymavryk.sandbox.parameters import LATEST
 from pymavryk.sandbox.parameters import sandbox_addresses
 
-DOCKER_IMAGE = 'mavrykdynamics/sandboxed-node:v20.1-rc1'
+# DOCKER_IMAGE = 'mavrykdynamics/sandboxed-node:v21.2-1'
+DOCKER_IMAGE = 'mavrykdynamics/sandboxed-node:v20.3'
 MAX_ATTEMPTS = 60
 ATTEMPT_DELAY = 0.5
-TEZOS_NODE_PORT = 8732
+MAVRYK_NODE_PORT = 8732
 
 
 def kill_existing_containers():
     docker = DockerClient()
-    running_containers: List[Container] = docker.client.containers.list(
+    running_containers: List[DockerContainer] = docker.client.containers.list(
         filters={
             'status': 'running',
             'ancestor': DOCKER_IMAGE,
@@ -77,9 +77,9 @@ def get_next_baker_key(client: PyMavrykClient) -> str:
 
 
 class SandboxedNodeContainer(DockerContainer):
-    def __init__(self, image=DOCKER_IMAGE, port=TEZOS_NODE_PORT):
+    def __init__(self, image=DOCKER_IMAGE, port=MAVRYK_NODE_PORT):
         super().__init__(image)
-        self.with_bind_ports(TEZOS_NODE_PORT, port)
+        self.with_bind_ports(MAVRYK_NODE_PORT, port)
         self.url = f'http://localhost:{port}'
         self.client = PyMavrykClient().using(shell=self.url)
 
@@ -115,7 +115,7 @@ class SandboxedNodeTestCase(unittest.TestCase):
     IMAGE: str = DOCKER_IMAGE
     "Docker image to use"
 
-    PORT: int = TEZOS_NODE_PORT
+    PORT: int = MAVRYK_NODE_PORT
     "Port to expose to host machine"
 
     PROTOCOL: str = LATEST

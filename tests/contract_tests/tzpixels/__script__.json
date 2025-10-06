@@ -463,7 +463,7 @@
                                   "prim": "string"
                                 },
                                 {
-                                  "string": "tez is not equal to price"
+                                  "string": "mav is not equal to price"
                                 }
                               ]
                             },
@@ -1299,7 +1299,7 @@
                                         "prim": "string"
                                       },
                                       {
-                                        "string": "tez is not equal to price"
+                                        "string": "mav is not equal to price"
                                       }
                                     ]
                                   },

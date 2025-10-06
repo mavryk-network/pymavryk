@@ -147,11 +147,11 @@ def optimize_timestamp(value: str) -> int:
     return int(value)
 
 
-def forge_address(value: str, tz_only=False) -> bytes:
+def forge_address(value: str, mv_only=False) -> bytes:
     """Encode address or key hash into bytes.
 
     :param value: base58 encoded address or key_hash
-    :param tz_only: True indicates that it's a key_hash (will be encoded in a more compact form)
+    :param mv_only: True indicates that it's a key_hash (will be encoded in a more compact form)
     """
     prefix_len = 4 if value.startswith('txr1') else 3
     prefix = value[:prefix_len]
@@ -174,7 +174,7 @@ def forge_address(value: str, tz_only=False) -> bytes:
     else:
         raise ValueError(f'Can\'t forge address: unknown prefix `{prefix}`')
 
-    return res[1:] if tz_only else res
+    return res[1:] if mv_only else res
 
 
 def unforge_address(data: bytes) -> str:
@@ -183,16 +183,16 @@ def unforge_address(data: bytes) -> str:
     :param data: encoded address or key_hash
     :returns: base58 encoded address
     """
-    tz_prefixes = {
+    mv_prefixes = {
         b'\x00\x00': b'mv1',
         b'\x00\x01': b'mv2',
         b'\x00\x02': b'mv3',
         b'\x00\x03': b'mv4',
     }
 
-    for bin_prefix, tz_prefix in tz_prefixes.items():
+    for bin_prefix, mv_prefix in mv_prefixes.items():
         if data.startswith(bin_prefix):
-            return base58_encode(data[2:], tz_prefix).decode()
+            return base58_encode(data[2:], mv_prefix).decode()
 
     if data.startswith(b'\x01') and data.endswith(b'\x00'):
         return base58_encode(data[1:-1], b'KT1').decode()
@@ -201,7 +201,7 @@ def unforge_address(data: bytes) -> str:
     elif data.startswith(b'\x03') and data.endswith(b'\x00'):
         return base58_encode(data[1:-1], b'sr1').decode()
     else:
-        return base58_encode(data[1:], tz_prefixes[b'\x00' + data[:1]]).decode()
+        return base58_encode(data[1:], mv_prefixes[b'\x00' + data[:1]]).decode()
 
 
 def forge_contract(value: str) -> bytes:
@@ -232,7 +232,7 @@ def unforge_contract(data: bytes) -> str:
 def forge_public_key(value: str) -> bytes:
     """Encode public key into bytes.
 
-    :param value: public key in in base58 form
+    :param value: public key in base58 form
     """
     prefix = value[:4]
     res = base58.b58decode_check(value)[4:]
@@ -243,6 +243,8 @@ def forge_public_key(value: str) -> bytes:
         return b'\x01' + res
     elif prefix == 'p2pk':
         return b'\x02' + res
+    elif prefix == 'BLpk':
+        return b'\x03' + res
 
     raise ValueError(f'Unrecognized key type: #{prefix}')
 
@@ -257,6 +259,7 @@ def unforge_public_key(data: bytes) -> str:
         b'\x00': b'edpk',
         b'\x01': b'sppk',
         b'\x02': b'p2pk',
+        b'\x03': b'BLpk',
     }
     return base58_encode(data[1:], key_prefix[data[:1]]).decode()
 

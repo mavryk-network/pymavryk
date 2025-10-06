@@ -6,8 +6,8 @@ import requests
 import yaml
 
 target_path = join(dirname(dirname(__file__)), 'src', 'michelson_kernel', 'docs.py')
-meta_url = 'https://gitlab.com/tezos/michelson-reference/-/raw/master/michelson_reference/michelson-meta.yaml'
-sema_url = 'https://gitlab.com/tezos/michelson-reference/-/raw/master/michelson_reference/michelson.json'
+meta_url = 'https://gitlab.com/mavryk-network/michelson-reference/-/raw/master/michelson_reference/michelson-meta.yaml'
+sema_url = 'https://gitlab.com/mavryk-network/michelson-reference/-/raw/master/michelson_reference/michelson.json'
 extra = {'RENAME': '', 'CAST': '', 'TOP': '', 'EXPAND': ''}
 
 
@@ -24,9 +24,9 @@ def format_entry(title, concl, descr):
 
 
 def generate():
-    meta_src = requests.get(meta_url).text
+    meta_src = requests.get(meta_url, timeout=10).text
     meta = yaml.load(meta_src, Loader=yaml.SafeLoader)
-    sema = requests.get(sema_url).json()
+    sema = requests.get(sema_url, timeout=60).json()
     docs = extra.copy()
 
     for section in ['instructions', 'types']:

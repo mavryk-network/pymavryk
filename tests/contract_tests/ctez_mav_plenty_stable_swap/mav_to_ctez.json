@@ -1,22 +1,14 @@
 {
   "parameters": {
-    "entrypoint": "ctez_to_tez",
+    "entrypoint": "mav_to_ctez",
     "value": {
       "prim": "Pair",
       "args": [
         {
-          "int": "10000000"
+          "int": "23261727"
         },
         {
-          "prim": "Pair",
-          "args": [
-            {
-              "int": "10618794"
-            },
-            {
-              "string": "mv1LC5noeHV1KJD9GtjN4PyTfY3qQJzqyt1U"
-            }
-          ]
+          "string": "mv19T6i93sMG3pdxY4NFFLwkCBKT3YuCAnm7"
         }
       ]
     }
@@ -54,7 +46,7 @@
         "prim": "Pair",
         "args": [
           {
-            "int": "19991543628"
+            "int": "20010205943"
           },
           {
             "bytes": "0157006fcca7770ededb7fc644a1a354f7ebbdae1800"
@@ -68,7 +60,7 @@
         "bytes": "013463d7aff77ae4d127b2740650998919b2b5535700"
       },
       {
-        "int": "41373385577"
+        "int": "41363624975"
       }
     ],
     {
@@ -81,7 +73,7 @@
               "prim": "Some",
               "args": [
                 {
-                  "int": "10618794"
+                  "int": "23261727"
                 }
               ]
             },
@@ -97,17 +89,12 @@
               "prim": "Some",
               "args": [
                 {
-                  "bytes": "0000962e69da4522f40dea8b9e8d1b87cad56fcde40f"
+                  "bytes": "0000438aa0ed99c9939b86ae8611d1a3da40a270475a"
                 }
               ]
             },
             {
-              "prim": "Some",
-              "args": [
-                {
-                  "bytes": "0000962e69da4522f40dea8b9e8d1b87cad56fcde40f"
-                }
-              ]
+              "prim": "None"
             }
           ]
         }
@@ -120,7 +107,7 @@
           "prim": "False"
         },
         {
-          "int": "21406012530"
+          "int": "21375962530"
         }
       ]
     },
@@ -128,7 +115,7 @@
       "prim": "Some",
       "args": [
         {
-          "int": "10000000"
+          "int": "25000000"
         }
       ]
     },

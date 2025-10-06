@@ -11,7 +11,7 @@ folder = 'typed_minter'
 entrypoint = 'mint_TYPED'
 
 
-class MainnetOperationTestCaseCTEZ_TEZ_PLENTY_STABLE_SWAP(TestCase):
+class MainnetOperationTestCaseCTEZ_mav_PLENTY_STABLE_SWAP(TestCase):
     @classmethod
     def setUpClass(cls):
         with open(join(dirname(__file__), f'', '__script__.json')) as f:
@@ -19,14 +19,14 @@ class MainnetOperationTestCaseCTEZ_TEZ_PLENTY_STABLE_SWAP(TestCase):
 
         cls.program = MichelsonProgram.match(script['code'])
 
-        with open(join(dirname(__file__), f'', f'tez_to_ctez_callback.json')) as f:
+        with open(join(dirname(__file__), f'', f'mav_to_ctez_callback.json')) as f:
             operation = json.loads(f.read())
 
-        cls.entrypoint = f'tez_to_ctez_callback'
+        cls.entrypoint = f'mav_to_ctez_callback'
         cls.operation = operation
         # cls.maxDiff = None
 
-    def test_parameters_ctez_tez_plenty_stable_swap(self):
+    def test_parameters_ctez_mav_plenty_stable_swap(self):
         original_params = self.program.parameter.from_parameters(self.operation['parameters'])
         py_obj = original_params.to_python_object()
         # pprint(py_obj)
@@ -34,7 +34,7 @@ class MainnetOperationTestCaseCTEZ_TEZ_PLENTY_STABLE_SWAP(TestCase):
         self.assertEqual(py_obj, readable_params.to_python_object())
         self.program.parameter.from_python_object(py_obj)
 
-    def test_lazy_storage_ctez_tez_plenty_stable_swap(self):
+    def test_lazy_storage_ctez_mav_plenty_stable_swap(self):
         storage = self.program.storage.from_micheline_value(self.operation['storage'])
         lazy_storage_diff = self.operation['lazy_storage_diff']
 

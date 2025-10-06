@@ -5813,7 +5813,7 @@
                                                   }
                                                 ],
                                                 "annots": [
-                                                  "%tez_to_ctez"
+                                                  "%mav_to_ctez"
                                                 ]
                                               },
                                               {
@@ -6169,7 +6169,7 @@
                                                   }
                                                 ],
                                                 "annots": [
-                                                  "%tez_to_ctez"
+                                                  "%mav_to_ctez"
                                                 ]
                                               },
                                               {
@@ -6506,7 +6506,7 @@
                                                     {
                                                       "prim": "nat",
                                                       "annots": [
-                                                        "%minTezBought"
+                                                        "%minMavBought"
                                                       ]
                                                     },
                                                     {
@@ -6521,7 +6521,7 @@
                                             }
                                           ],
                                           "annots": [
-                                            "%ctez_to_tez"
+                                            "%ctez_to_mav"
                                           ]
                                         },
                                         {
@@ -10944,7 +10944,7 @@
                                                   }
                                                 ],
                                                 "annots": [
-                                                  "%tez_to_ctez"
+                                                  "%mav_to_ctez"
                                                 ]
                                               },
                                               {
@@ -11300,7 +11300,7 @@
                                                   }
                                                 ],
                                                 "annots": [
-                                                  "%tez_to_ctez"
+                                                  "%mav_to_ctez"
                                                 ]
                                               },
                                               {
@@ -11637,7 +11637,7 @@
                                                     {
                                                       "prim": "nat",
                                                       "annots": [
-                                                        "%minTezBought"
+                                                        "%minMavBought"
                                                       ]
                                                     },
                                                     {
@@ -11652,7 +11652,7 @@
                                             }
                                           ],
                                           "annots": [
-                                            "%ctez_to_tez"
+                                            "%ctez_to_mav"
                                           ]
                                         },
                                         {
@@ -15640,7 +15640,7 @@
                                                   }
                                                 ],
                                                 "annots": [
-                                                  "%tez_to_ctez"
+                                                  "%mav_to_ctez"
                                                 ]
                                               },
                                               {
@@ -16004,7 +16004,7 @@
                                                   }
                                                 ],
                                                 "annots": [
-                                                  "%tez_to_ctez"
+                                                  "%mav_to_ctez"
                                                 ]
                                               },
                                               {
@@ -16349,7 +16349,7 @@
                                                     {
                                                       "prim": "nat",
                                                       "annots": [
-                                                        "%minTezBought"
+                                                        "%minMavBought"
                                                       ]
                                                     },
                                                     {
@@ -16364,7 +16364,7 @@
                                             }
                                           ],
                                           "annots": [
-                                            "%ctez_to_tez"
+                                            "%ctez_to_mav"
                                           ]
                                         },
                                         {

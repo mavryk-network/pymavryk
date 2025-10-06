@@ -94,7 +94,7 @@ rpc_docs = {
       "ret": "Object"
     },
     "DELETE": {
-      "descr": "Remove an invalid block for the tezos storage",
+      "descr": "Remove an invalid block for the mavryk storage",
       "args": [],
       "ret": "Object"
     }
@@ -283,6 +283,7 @@ rpc_docs = {
       "commit_hash",
       "heads",
       "protocols",
+      "received_blocks",
       "validated_blocks"
     ]
   },
@@ -352,6 +353,19 @@ rpc_docs = {
   "/monitor/protocols": {
     "GET": {
       "descr": "Monitor all economic protocols that are retrieved and successfully loaded and compiled by the node.",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/monitor/received_blocks": {
+    "item": {
+      "name": "chain_id",
+      "descr": "A chain identifier. This is either a chain hash in Base58Check notation or a one the predefined aliases: 'main', 'test'."
+    }
+  },
+  "/monitor/received_blocks/{}": {
+    "GET": {
+      "descr": "Monitor all newly received blocks that are not yet known by the store.",
       "args": [],
       "ret": "Object"
     }
@@ -938,6 +952,7 @@ rpc_docs = {
       "merkle_tree",
       "merkle_tree_v2",
       "nonces",
+      "protocol_treasury",
       "raw",
       "sapling",
       "seed",
@@ -1180,7 +1195,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/contracts/{}/estimated_own_pending_slashed_amount": {
     "GET": {
-      "descr": "Returns the estimated own pending slashed amount (in mutez) of a given contract.",
+      "descr": "Returns the estimated own pending slashed amount (in mumav) of a given contract.",
       "args": [],
       "ret": "Object"
     }
@@ -1483,7 +1498,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/estimated_shared_pending_slashed_amount": {
     "GET": {
-      "descr": "Returns the estimated shared pending slashed amount (in mutez) of a given delegate.",
+      "descr": "Returns the estimated shared pending slashed amount (in mumav) of a given delegate.",
       "args": [],
       "ret": "Object"
     }
@@ -1525,7 +1540,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/min_delegated_in_current_cycle": {
     "GET": {
-      "descr": "Returns the minimum of delegated tez (in mutez) over the current cycle and the block level where this value was last updated (* Level is `None` when decoding values from protocol O).",
+      "descr": "Returns the minimum of delegated mav (in mumav) over the current cycle and the block level where this value was last updated (* Level is `None` when decoding values from protocol O).",
       "args": [],
       "ret": "Object"
     }
@@ -1567,7 +1582,7 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/delegates/{}/total_delegated_stake": {
     "GET": {
-      "descr": "Returns the sum (in mutez) of all tokens staked by the delegators of a given delegate. This excludes the delegate's own staked tokens.",
+      "descr": "Returns the sum (in mumav) of all tokens staked by the delegators of a given delegate. This excludes the delegate's own staked tokens.",
       "args": [],
       "ret": "Object"
     }
@@ -1632,14 +1647,14 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/issuance/expected_issuance": {
     "GET": {
-      "descr": "Returns the expected issued tez for the provided block and the next 'consensus_rights_delay' cycles",
+      "descr": "Returns the expected issued mav for the provided block and the next 'consensus_rights_delay' cycles",
       "args": [],
       "ret": "Array"
     }
   },
   "/chains/{}/blocks/{}/context/issuance/issuance_per_minute": {
     "GET": {
-      "descr": "Returns the current expected maximum issuance per minute (in mutez)",
+      "descr": "Returns the current expected maximum issuance per minute (in mumav)",
       "args": [],
       "ret": "Object"
     }
@@ -1689,6 +1704,26 @@ rpc_docs = {
   "/chains/{}/blocks/{}/context/nonces/{}": {
     "GET": {
       "descr": "Info about the nonce of a previous block.",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/blocks/{}/context/protocol_treasury": {
+    "props": [
+      "address",
+      "buffer_address"
+    ]
+  },
+  "/chains/{}/blocks/{}/context/protocol_treasury/address": {
+    "GET": {
+      "descr": "Protocol treasury address",
+      "args": [],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/blocks/{}/context/protocol_treasury/buffer_address": {
+    "GET": {
+      "descr": "Protocol treasury buffer address",
       "args": [],
       "ret": "Object"
     }
@@ -1975,14 +2010,14 @@ rpc_docs = {
   },
   "/chains/{}/blocks/{}/context/total_frozen_stake": {
     "GET": {
-      "descr": "Returns the total stake (in mutez) frozen on the chain",
+      "descr": "Returns the total stake (in mumav) frozen on the chain",
       "args": [],
       "ret": "Object"
     }
   },
   "/chains/{}/blocks/{}/context/total_supply": {
     "GET": {
-      "descr": "Returns the total supply (in mutez) available on the chain",
+      "descr": "Returns the total supply (in mumav) available on the chain",
       "args": [],
       "ret": "Object"
     }
@@ -2709,6 +2744,8 @@ rpc_docs = {
       "liquidity_baking_escape_ema",
       "pending_migration_balance_updates",
       "pending_migration_operation_results",
+      "protocol_treasury_buffer_address",
+      "protocol_treasury_escape_ema",
       "ramp_up",
       "sapling",
       "seed_status",
@@ -3895,6 +3932,30 @@ rpc_docs = {
       "ret": "Array"
     }
   },
+  "/chains/{}/blocks/{}/context/raw/json/protocol_treasury_buffer_address": {
+    "GET": {
+      "descr": "\u00af\\_(\u30c4)_/\u00af",
+      "args": [
+        {
+          "name": "depth",
+          "descr": "\u00af\\_(\u30c4)_/\u00af"
+        }
+      ],
+      "ret": "Object"
+    }
+  },
+  "/chains/{}/blocks/{}/context/raw/json/protocol_treasury_escape_ema": {
+    "GET": {
+      "descr": "\u00af\\_(\u30c4)_/\u00af",
+      "args": [
+        {
+          "name": "depth",
+          "descr": "\u00af\\_(\u30c4)_/\u00af"
+        }
+      ],
+      "ret": "Integer"
+    }
+  },
   "/chains/{}/blocks/{}/context/raw/json/ramp_up": {
     "GET": {
       "descr": "\u00af\\_(\u30c4)_/\u00af",
@@ -4272,7 +4333,8 @@ rpc_docs = {
     },
     "props": [
       "inbox",
-      "index"
+      "index",
+      "previous_commitment_period"
     ]
   },
   "/chains/{}/blocks/{}/context/raw/json/smart_rollup/inbox": {
@@ -4826,6 +4888,18 @@ rpc_docs = {
         }
       ],
       "ret": "String"
+    }
+  },
+  "/chains/{}/blocks/{}/context/raw/json/smart_rollup/previous_commitment_period": {
+    "GET": {
+      "descr": "\u00af\\_(\u30c4)_/\u00af",
+      "args": [
+        {
+          "name": "depth",
+          "descr": "\u00af\\_(\u30c4)_/\u00af"
+        }
+      ],
+      "ret": "Integer"
     }
   },
   "/chains/{}/blocks/{}/context/raw/json/staking_balance": {

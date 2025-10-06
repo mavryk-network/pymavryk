@@ -18,10 +18,9 @@ all:               ## Run a whole CI pipeline: lint, run tests, build docs
 
 install-deps:      ## Install binary dependencies
 ifneq (,$(findstring linux-gnu,$(OSTYPE)))
-	sudo apt install libsodium-dev libsecp256k1-dev libgmp-dev pkg-config
+	sudo apt install libsodium-dev libgmp-dev pkg-config
 else ifneq (,$(findstring darwin,$(OSTYPE)))
-	brew tap cuber/homebrew-libsecp256k1
-	brew install libsodium libsecp256k1 gmp pkg-config
+	brew install libsodium gmp pkg-config
 else
 	echo "Unsupported platform $(OSTYPE)"
 	exit 1
@@ -126,5 +125,12 @@ update-contracts:  ## Update contract tests
 kernel-docs:       ## Build docs for Michelson IPython kernel
 	poetry run python scripts/generate_kernel_docs.py
 
+# NOTE: See `pymavryk.sandbox.parameters`
+sandbox-params:
+	docker create --name temp mavrykdynamics/mavryk && docker cp temp:/usr/local/share/mavryk/003-PtCUpdate-parameters/ src/pymavryk/sandbox/ && docker rm temp
+
 rpc-docs:          ## Build docs for Mavryk node RPC
 	poetry run python scripts/fetch_rpc_docs.py
+
+before_release:    ## Prepare for a new release after updating version in pyproject.toml
+	make update all

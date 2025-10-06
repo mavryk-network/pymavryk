@@ -19,7 +19,7 @@ TEST_VIEW_JSON = """
       "name": "MIT",
       "details": "The MIT License"
     },
-    "homepage": "https://gitlab.com/tezos/tezos",
+    "homepage": "https://gitlab.com/mavryk-network/mavryk-protocol",
     "interfaces": [
       "TZIP-16",
       "TZIP-12"

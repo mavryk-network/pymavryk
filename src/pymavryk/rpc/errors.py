@@ -26,7 +26,7 @@ class MichelsonError(RpcError, error_id='michelson_v1'):
     """Catch all michelson_v1 errors"""
 
 
-class TezArithmeticError(RpcError, error_id='mav'):
+class MavArithmeticError(RpcError, error_id='mav'):
     """Catch all mav errors"""
 
 

@@ -8,6 +8,6 @@ services:
       - 8888:8888
 
   sandbox_node:
-    image: mavrykdynamics/sandboxed-node:v20.1-rc1
+    image: mavrykdynamics/sandboxed-node:v21.0-1
     ports:
       - 8732:8732

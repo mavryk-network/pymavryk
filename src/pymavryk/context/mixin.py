@@ -36,6 +36,7 @@ nodes = {
     'basenet': ['https://basenet.rpc.mavryk.network'],
     'atlasnet': ['https://atlasnet.rpc.mavryk.network'],
     'boreasnet': ['https://boreasnet.rpc.mavryk.network'],
+    'cnet': ['https://cnet.rpc.mavryk.network'],
 }
 keys = {
     'alice': alice_key,

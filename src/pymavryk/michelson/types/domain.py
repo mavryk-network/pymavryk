@@ -279,7 +279,7 @@ class KeyHashType(StringType, prim='key_hash'):
 
     def to_micheline_value(self, mode='readable', lazy_diff=False):
         if mode in ['optimized', 'legacy_optimized']:
-            return {'bytes': forge_address(self.value, tz_only=True).hex()}
+            return {'bytes': forge_address(self.value, mv_only=True).hex()}
         elif mode == 'readable':
             return {'string': self.value}
         else:

@@ -11,7 +11,7 @@ folder = 'typed_minter'
 entrypoint = 'mint_TYPED'
 
 
-class MainnetOperationTestCaseCTEZ_TEZ_PNLP_FARM(TestCase):
+class MainnetOperationTestCaseCTEZ_mav_PNLP_FARM(TestCase):
     @classmethod
     def setUpClass(cls):
         with open(join(dirname(__file__), f'', '__script__.json')) as f:
@@ -26,7 +26,7 @@ class MainnetOperationTestCaseCTEZ_TEZ_PNLP_FARM(TestCase):
         cls.operation = operation
         # cls.maxDiff = None
 
-    def test_parameters_ctez_tez_pnlp_farm(self):
+    def test_parameters_ctez_mav_pnlp_farm(self):
         original_params = self.program.parameter.from_parameters(self.operation['parameters'])
         py_obj = original_params.to_python_object()
         # pprint(py_obj)
@@ -34,7 +34,7 @@ class MainnetOperationTestCaseCTEZ_TEZ_PNLP_FARM(TestCase):
         self.assertEqual(py_obj, readable_params.to_python_object())
         self.program.parameter.from_python_object(py_obj)
 
-    def test_lazy_storage_ctez_tez_pnlp_farm(self):
+    def test_lazy_storage_ctez_mav_pnlp_farm(self):
         storage = self.program.storage.from_micheline_value(self.operation['storage'])
         lazy_storage_diff = self.operation['lazy_storage_diff']
 
