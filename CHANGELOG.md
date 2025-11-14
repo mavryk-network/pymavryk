@@ -385,7 +385,7 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 
 ### Fixed
 
-- `pymavryk sandbox` CLI command now works properly and provides almost flextesa-like experience at lesser cost
+- `pymavryk sandbox` CLI command now works properly and provides almost mavbox-like experience at lesser cost
 - Operation branch was calculated incorrectly based on the TTL (before `head~{60-ttl}`, after `head~{120-ttl}`
 
 <!-- Links -->

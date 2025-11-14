@@ -6,19 +6,19 @@
 Welcome to PyMavryk reference!
 ===================================
 
-.. title:: Baking Bad
+.. title:: Mavryk Dynamics
 
 .. meta::
    :description: Python SDK & CLI for Mavryk, Michelson REPL and integration testing framework
    :keywords: mavryk, blockchain, python, library, sdk, cli, repl, testing, framework, rpc, michelson, micheline, contract
    :twitter:card: summary
-   :twitter:creator: @TezosBakingBad
-   :twitter:title: PyMavryk documentation | Baking Bad
+   :twitter:creator: @MavrykDynamics
+   :twitter:title: PyMavryk documentation | Mavryk Dynamics
    :twitter:description: Python SDK & CLI for Mavryk, Michelson REPL and integration testing framework
    :twitter:image: https://repository-images.Mavryk.com/169243460/eb3da980-c1e1-11e9-9e60-6f32b60ddf38
    :og:url: https://pymavryk.mavryk.org
    :og:type: website
-   :og:title: PyMavryk documentation | Baking Bad
+   :og:title: PyMavryk documentation | Mavryk Dynamics
    :og:description: Python SDK & CLI for Mavryk, Michelson REPL and integration testing framework
    :og:image: https://repository-images.githubusercontent.com/169243460/eb3da980-c1e1-11e9-9e60-6f32b60ddf38
 

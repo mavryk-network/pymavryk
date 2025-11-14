@@ -9,7 +9,7 @@
     <title>PyMavryk | Mavryk Dynamics</title>
     <meta data-vmid="description" name="description" content="A Python library for interacting with Mavryk blockchain, testing smart contracts, and writing Michelson scripts">
     <meta name="image" content="https://pymavryk.mavryk.org/_static/img/pymavryk.png">
-    <meta name="twitter:title" content="PyMavryk by Baking Bad">
+    <meta name="twitter:title" content="PyMavryk by Mavryk Dynamics">
     <meta name="twitter:description" content="A Python library for interacting with Mavryk blockchain, testing smart contracts, and writing Michelson scripts">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://pymavryk.mavryk.org/_static/img/pymavryk.png">
@@ -29,6 +29,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
+        body {
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
         pre.bash {
             background-color: #343a40;
             padding: 10px 25px;
@@ -55,6 +60,81 @@
 
         .footer-links a {
             color: #555;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #61EB4C;
+        }
+
+        /* Button hover effects */
+        .btn-custom {
+            color: #DCDCDC;
+            border-radius: 4.8px;
+            border: 1px solid #61EB4C;
+            background: transparent;
+            padding: 10px 24px;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-custom:hover {
+            background: #61EB4C;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(97, 235, 76, 0.3);
+        }
+
+        .btn-custom:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(97, 235, 76, 0.2);
+        }
+
+        /* Section styling updates */
+        .section-dark {
+            background: #2c2c2c;
+            color: #f0f0f0;
+        }
+
+        .section-dark a {
+            color: #61EB4C;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .section-dark a:hover {
+            color: #7fff4d;
+            text-decoration: underline;
+        }
+
+        .section-light {
+            background: #ffffff;
+            color: #2c2c2c;
+        }
+
+        .section-light a {
+            color: #0084FF;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .section-light a:hover {
+            color: #61EB4C;
+            text-decoration: underline;
+        }
+
+        .section-gray {
+            background: #f5f5f5;
+            color: #2c2c2c;
+        }
+
+        /* Header gradient update */
+        .header-gradient {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%), linear-gradient(270deg, #0084FF 19%, #61EB4C 79%);
         }
 
         ::-webkit-scrollbar {
@@ -78,27 +158,26 @@
     </style>
 </head>
 
-<body style="background: #f9f9f9;">
-    <div class="container-fluid" style="background: #f0f0f0;">
+<body>
+    <div class="container-fluid header-gradient">
         <div class="row no-gutters align-items-center">
             <div class="col col-lg-6 col-md-10 col-sm-12 ml-auto mr-auto">
                 <div class="d-flex justify-content-center mt-5">
-                    <div class="d-none d-lg-block" style="width: 150px; margin-left: -50px;">
+                    <div class="d-none d-lg-block">
                         <img src="_static/img/pymavryk.png" class="img-fluid d-block" />
                     </div>
-                    <h1 style="font-size: 5em; font-weight: 800;">PyMavryk</h1>
                 </div>
                 <div class="mt-3">
-                    <p class="text-center" style="font-size: 1.5em;">
+                    <p class="text-center" style="font-size: 1.5em; color: #DCDCDC;">
                         A Python library for interacting with Mavryk blockchain, <br />testing smart contracts, and
                         writing
                         Michelson scripts.
                     </p>
                 </div>
                 <div class="mt-4 text-center">
-                    <a role="button" aria-pressed="true" class="btn btn-lg btn-outline-dark mb-1"
+                    <a role="button" aria-pressed="true" class="btn-custom btn-lg mb-1 mr-2"
                         href="contents.html">Documentation</a>
-                    <a role="button" aria-pressed="true" class="btn btn-lg btn-outline-dark mb-1"
+                    <a role="button" aria-pressed="true" class="btn-custom btn-lg mb-1"
                         href="https://pymavryk.mavryk.org" target="_blank">Interactive course</a>
                 </div>
                 <div class="mt-4 mb-5 text-center">
@@ -112,7 +191,7 @@
     </div>
 
     <a id="integration-testing"></a>
-    <div class="container-fluid pr-0 pt-4" style="background: #343a40; color: #f0f0f0;">
+    <div class="container-fluid pr-0 pt-4 section-dark">
         <div class="row no-gutters align-items-center">
             <div class="col col-lg-3 col-md-12 pl-4 pr-2" style="font-size: 1.2em;">
                 <h2 style="text-transform: uppercase;">Integration testing</h2><br />
@@ -148,7 +227,7 @@
     </div>
 
     <a id="pymavryk-client"></a>
-    <div class="container-fluid pr-0 pt-5" style="background: #f0f0f0;">
+    <div class="container-fluid pr-0 pt-5 section-light">
         <div class="row no-gutters align-items-center">
             <div class="col col-lg-3 col-md-12 pl-4 pr-2" style="font-size: 1.2em;">
                 <h2 style="text-transform: uppercase;">PyMavryk client</h2><br />
@@ -182,7 +261,7 @@
     </div>
 
     <a id="michelson-kernel"></a>
-    <div class="container-fluid pr-0 pt-5" style="background: #2f2f2f; color: #fff;">
+    <div class="container-fluid pr-0 pt-5 section-dark">
         <div class="row no-gutters align-items-center">
             <div class="col col-lg-3 col-md-12 pl-4 pr-2" style="font-size: 1.2em;">
                 <h2 style="text-transform: uppercase;">Michelson kernel</h2><br />
@@ -207,30 +286,8 @@
         </div>
     </div>
 
-    <a id="built-with-users"></a>
-    <div class="container-fluid pt-5 pb-5" style="background: #f0f0f0;">
-        <div class="row no-gutters align-items-center justify-content-center">
-            <a href="https://atomex.me" target="_blank">
-                <img src="_static/img/atomex.png" class="img-fluid d-block ml-4 mr-4 mb-2"
-                    style="height: 100px; margin-top: 12px;" />
-            </a>
-            <a href="https://www.oxheadalpha.com/" target="_blank" rel="nofollow noreferrer">
-                <img src="_static/img/oxheadalpha.svg" class="img-fluid d-block ml-4 mr-4 mb-2" />
-            </a>
-            <a href="https://www.equisafe.io/" target="_blank" rel="nofollow noreferrer">
-                <img src="_static/img/equisafe.png" class="img-fluid d-block ml-4 mr-4 mb-2 mt-1" />
-            </a>
-            <a href="https://www.tzero.com/" target="_blank" rel="nofollow noreferrer">
-                <img src="_static/img/tzero.svg" class="img-fluid d-block ml-4 mr-4 mb-2" />
-            </a>
-            <a href="https://www.chorus.mobi/" target="_blank" rel="nofollow noreferrer">
-                <img src="_static/img/chorus.png" style="height: 70px;" class="img-fluid d-block ml-4 mt-1 mr-4 mb-2" />
-            </a>
-        </div>
-    </div>
-
     <a id="contact"></a>
-    <div class="container-fluid pt-5 pb-5" style="background: #e0e0e0;">
+    <div class="container-fluid pt-5 pb-5 section-gray">
         <div class="row no-gutters">
             <div class="col-lg-6 col-md-12 ml-auto mr-auto" style="font-size: 1.2em;">
                 <div class="row">
@@ -238,30 +295,21 @@
                         <span>Resources</span>
                         <ul class="footer-links">
                             <li><a href="https://pymavryk.mavryk.org/contents.html">Library reference</a></li>
-                            <li><a href="https://pymavryk.mavryk.org">Interactive course</a></li>
-                            <li><a href="https://tezos.stackexchange.com/search?q=pymavryk" target="_blank"
-                                    rel="noopener noreferrer">Stack exchange</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6">
                         <span>Ask anything</span>
                         <ul class="footer-links">
-                            <li><a href="https://t.me/baking_bad_chat" target="_blank" rel="noopener noreferrer">Telegram chat</a></li>
-                            <li><a href="https://tezos-dev.slack.com/archives/CV5NX7F2L" target="_blank" rel="noopener noreferrer">Slack channel</a></li>
+                            <li><a href="https://t.me/MavrykNetwork" target="_blank" rel="noopener noreferrer">Telegram chat</a></li>
                             <li><a href="https://github.com/mavrykdynamics/pymavryk/issues" target="_blank" rel="noopener noreferrer">Report an issue</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6">
                         <span>Follow us</span>
                         <ul class="footer-links">
-                            <li><a href="https://baking-bad.org/blog/" target="_blank">Baking Bad blog</a></li>
-                            <li><a href="https://twitter.com/TezosBakingBad" target="_blank" rel="noopener noreferrer">Twitter channel</a></li>
+                            <li><a href="https://mavrykdynamics.com/" target="_blank">Mavryk Dynamics</a></li>
+                            <li><a href="https://twitter.com/MavrykDynamics" target="_blank" rel="noopener noreferrer">X/Twitter channel</a></li>
                         </ul>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <a href="https://baking-bad.org/docs" target="_blank">
-                            <img src="_static/img/bb.png" class="img-fluid d-block pl-4" style="height: 100px;" />
-                        </a>
                     </div>
                 </div>
             </div>

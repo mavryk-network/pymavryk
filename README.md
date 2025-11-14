@@ -173,12 +173,12 @@ https://medium.com/tezoscommons/testing-michelson-contracts-with-pytezos-5137184
 
 ### Contact
 
-* Telegram chat: [@baking_bad_chat](https://t.me/baking_bad_chat)
-* Slack channel: [#baking-bad](https://tezos-dev.slack.com/archives/CV5NX7F2L)
+* Telegram chat: [@MavrykNetwork](https://t.me/MavrykNetwork)
 
 ## Credits
 
-* The project was initially started by Arthur Breitman, now it's maintained by Baking Bad team.
+* **This project is a fork of [PyTezos](https://github.com/baking-bad/pytezos) by [Baking Bad](https://baking-bad.org/), licensed under the MIT License**
+* The original PyTezos project was initially started by Arthur Breitman, and is now maintained by the Baking Bad team
 * Baking Bad is supported by Tezos Foundation
 * Michelson test set from the Mavryk repo is used to ensure the interpreter workability
 * Michelson structured documentation by Nomadic Labs is used for inline help

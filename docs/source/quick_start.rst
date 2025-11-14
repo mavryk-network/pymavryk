@@ -316,7 +316,7 @@ tutorial we will get it from Michelson source file. There are plenty of availabl
 .. code-block:: python
 
    >>> from pymavryk import ContractInterface
-   >>> contract = ContractInterface.from_url('https://raw.githubusercontent.com/baking-bad/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz')
+   >>> contract = ContractInterface.from_url('https://raw.githubusercontent.com/mavryk-network/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz')
    >>> contract.script
    <function ContractInterface.script at 0x7fc1768e2c10>
    Generate script for contract origination.
@@ -363,11 +363,11 @@ Simultaneously, we will explore how to batch several operations in a single grou
 .. code-block:: python
 
     >>> wallet = ContractInterface \
-    ...     .from_url('https://raw.githubusercontent.com/baking-bad/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz') \
+    ...     .from_url('https://raw.githubusercontent.com/mavryk-network/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz') \
     ...     .using(key=key)
     ...
     ... builder = ContractInterface \
-    ...     .from_url('https://raw.githubusercontent.com/baking-bad/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_builder_fungible.tz') \
+    ...     .from_url('https://raw.githubusercontent.com/mavryk-network/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_builder_fungible.tz') \
     ...     .using(key=key)
     ...
     ... opg = pymavryk.bulk(

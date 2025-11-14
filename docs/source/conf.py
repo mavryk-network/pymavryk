@@ -17,8 +17,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'PyMavryk'
-copyright = '2020, Baking Bad'
-author = 'Arthur Breitman, Michael Zaikin'
+copyright = '2024, Mavryk Dynamics; 2020, Baking Bad; 2018, Arthur Breitman'
+author = 'Mavryk Dynamics, Arthur Breitman, Michael Zaikin'
 
 
 # -- General configuration ---------------------------------------------------
@@ -57,6 +57,17 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 
 html_theme = "sphinx_rtd_theme"
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+html_theme_options = {
+    'style_nav_header_background': 'linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%), linear-gradient(270deg, #0084FF 19%, #61EB4C 79%)',  # Gradient background for nav header/search area
+    'logo_only': True,  # Only display the logo image, do not display the project name
+}
+
+# The logo for the documentation, displayed in the sidebar
+html_logo = 'logo.png'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.

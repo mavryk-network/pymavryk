@@ -1,0 +1,191 @@
+/* Custom CSS to override Sphinx RTD theme blue colors with green */
+
+/* Links - change from blue to green */
+a {
+    color: #61EB4C !important;
+}
+
+a:visited {
+    color: #4FC73A !important;
+}
+
+a:hover {
+    color: #7FFF4D !important;
+}
+
+/* Reference links */
+a.reference {
+    color: #61EB4C !important;
+}
+
+a.reference:hover {
+    color: #7FFF4D !important;
+}
+
+/* Internal references */
+a.reference.internal {
+    color: #61EB4C !important;
+}
+
+a.reference.internal:hover {
+    color: #7FFF4D !important;
+    text-decoration: underline;
+}
+
+/* External references */
+a.reference.external {
+    color: #61EB4C !important;
+}
+
+a.reference.external:hover {
+    color: #7FFF4D !important;
+}
+
+/* Code references */
+a.code {
+    color: #61EB4C !important;
+}
+
+a.code:hover {
+    color: #7FFF4D !important;
+}
+
+/* Header links */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: #61EB4C !important;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    color: #7FFF4D !important;
+}
+
+/* RTD theme specific - sidebar and navigation */
+/* Note: nav header background is set via html_theme_options['style_nav_header_background'] in conf.py */
+
+.wy-side-nav-search > a {
+    color: #000000 !important;
+}
+
+.wy-menu-vertical a {
+    color: #61EB4C !important;
+}
+
+.wy-menu-vertical a:hover {
+    color: #7FFF4D !important;
+    background-color: rgba(97, 235, 76, 0.1) !important;
+}
+
+.wy-menu-vertical li.current > a {
+    color: #61EB4C !important;
+    background-color: rgba(97, 235, 76, 0.15) !important;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+    border-right: 3px solid #61EB4C !important;
+}
+
+/* Version selector */
+.rst-versions .rst-current-version {
+    background-color: #61EB4C !important;
+}
+
+/* Code blocks - syntax highlighting links */
+.highlight a {
+    color: #61EB4C !important;
+}
+
+/* Table of contents links */
+.toctree-wrapper a {
+    color: #61EB4C !important;
+}
+
+.toctree-wrapper a:hover {
+    color: #7FFF4D !important;
+}
+
+/* Search results */
+.search li a {
+    color: #61EB4C !important;
+}
+
+.search li a:hover {
+    color: #7FFF4D !important;
+}
+
+/* Breadcrumbs */
+.breadcrumbs a {
+    color: #61EB4C !important;
+}
+
+.breadcrumbs a:hover {
+    color: #7FFF4D !important;
+}
+
+/* Footer links */
+.footer a {
+    color: #61EB4C !important;
+}
+
+.footer a:hover {
+    color: #7FFF4D !important;
+}
+
+/* Admonitions - info boxes (usually blue) */
+.admonition {
+    border-left-color: #61EB4C !important;
+}
+
+.admonition-title {
+    background-color: rgba(97, 235, 76, 0.1) !important;
+    color: #61EB4C !important;
+}
+
+.admonition.note {
+    border-left-color: #61EB4C !important;
+}
+
+.admonition.note .admonition-title {
+    background-color: rgba(97, 235, 76, 0.1) !important;
+    color: #61EB4C !important;
+}
+
+/* View source links */
+.viewcode-link {
+    color: #61EB4C !important;
+}
+
+.viewcode-link:hover {
+    color: #7FFF4D !important;
+}
+
+/* Download links */
+.download a {
+    color: #61EB4C !important;
+}
+
+.download a:hover {
+    color: #7FFF4D !important;
+}
+
+/* Button-like elements */
+.btn {
+    background-color: #61EB4C !important;
+    border-color: #61EB4C !important;
+    color: #000000 !important;
+}
+
+.btn:hover {
+    background-color: #7FFF4D !important;
+    border-color: #7FFF4D !important;
+}
+
+/* Signature/parameter links */
+.sig-name {
+    color: #61EB4C !important;
+}
+
+/* Any other blue accents */
+[style*="blue"], [style*="#2980B9"], [style*="#0066CC"] {
+    color: #61EB4C !important;
+}
+
