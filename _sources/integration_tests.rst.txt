@@ -4,8 +4,6 @@ Michelson integration tests
 Step by step guide
 --------------------
 
-Read this Medium article: https://medium.com/tezoscommons/testing-michelson-contracts-with-pymavryk-513718499e93
-
 Loading contract
 ------------------
 
@@ -139,18 +137,5 @@ Sandboxed node will be rolled back to genesis block between run of multiple test
 Examples
 --------------
 
-- Contract tests: https://github.com/baking-bad/pymavryk/tree/master/tests/contract_tests
-- Tests with sandboxed node: https://github.com/baking-bad/pymavryk/tree/master/tests/sandbox_tests
-
-Projects using PyMavryk
-------------------------
-See how PyMavryk testing engine is used in production:
-
-- Atomex
-  https://github.com/atomex-me/atomex-michelson/blob/master/tests/test_atomex.py
-- Atomex FA1.2
-  https://github.com/atomex-me/atomex-fa12-ligo/tree/master/tests
-- TQTezos MAC
-  https://github.com/tqtezos/smart-contracts/tree/master/multi_asset/tezos_mac_tests
-- Equisafe NYX
-  https://gitlab.com/equisafe/nyx/-/tree/master/tests
+- Contract tests: https://github.com/mavryk-network/pymavryk/tree/master/tests/contract_tests
+- Tests with sandboxed node: https://github.com/mavryk-network/pymavryk/tree/master/tests/sandbox_tests

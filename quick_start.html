@@ -29,12 +29,13 @@
   <div class="wy-grid-for-nav">
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%), linear-gradient(270deg, #0084FF 19%, #61EB4C 79%)" >
 
           
           
-          <a href="contents.html" class="icon icon-home">
-            PyMavryk
+          <a href="contents.html">
+            
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -84,7 +85,7 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%), linear-gradient(270deg, #0084FF 19%, #61EB4C 79%)" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="contents.html">PyMavryk</a>
       </nav>
@@ -385,7 +386,7 @@ Press “Request 2001 mav” and wait for transaction to be completed.</p>
 tutorial we will get it from Michelson source file. There are plenty of available methods, but we’are interested in
 <code class="docutils literal notranslate"><span class="pre">script</span></code> which gives us payload for origination.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pymavryk</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContractInterface</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractInterface</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/baking-bad/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractInterface</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/mavryk-network/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">contract</span><span class="o">.</span><span class="n">script</span>
 <span class="go">&lt;function ContractInterface.script at 0x7fc1768e2c10&gt;</span>
 <span class="go">Generate script for contract origination.</span>
@@ -423,11 +424,11 @@ Previously we were searching operation using an integer offset (N levels ago), h
 <p>The example we chose is actually a ticket wallet that can only send or receive existing tickets, so we need another contract capable of minting new ones.
 Simultaneously, we will explore how to batch several operations in a single group.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wallet</span> <span class="o">=</span> <span class="n">ContractInterface</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/baking-bad/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz&#39;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/mavryk-network/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_wallet_fungible.tz&#39;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span><span class="n">builder</span> <span class="o">=</span> <span class="n">ContractInterface</span> \
-<span class="gp">... </span>    <span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/baking-bad/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_builder_fungible.tz&#39;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/mavryk-network/pymavryk/master/tests/unit_tests/test_michelson/test_repl/mini_scenarios/ticket_builder_fungible.tz&#39;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">using</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">... </span><span class="n">opg</span> <span class="o">=</span> <span class="n">pymavryk</span><span class="o">.</span><span class="n">bulk</span><span class="p">(</span>
@@ -759,7 +760,7 @@ PyMavryk allows you to keep that address empty and get the view result:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Baking Bad.</p>
+    <p>&#169; Copyright 2024, Mavryk Dynamics; 2020, Baking Bad; 2018, Arthur Breitman.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
