@@ -135,6 +135,57 @@
         /* Header gradient update */
         .header-gradient {
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.65) 100%), linear-gradient(270deg, #0084FF 19%, #61EB4C 79%);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Compact, centered layout */
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 1rem;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* Compact sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Compact footer */
+        .footer-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
 
         ::-webkit-scrollbar {
@@ -160,159 +211,80 @@
 
 <body>
     <div class="container-fluid header-gradient">
-        <div class="row no-gutters align-items-center">
-            <div class="col col-lg-6 col-md-10 col-sm-12 ml-auto mr-auto">
-                <div class="d-flex justify-content-center mt-5">
-                    <div class="d-none d-lg-block">
-                        <img src="_static/img/pymavryk.png" class="img-fluid d-block" />
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <p class="text-center" style="font-size: 1.5em; color: #DCDCDC;">
-                        A Python library for interacting with Mavryk blockchain, <br />testing smart contracts, and
-                        writing
-                        Michelson scripts.
-                    </p>
-                </div>
-                <div class="mt-4 text-center">
-                    <a role="button" aria-pressed="true" class="btn-custom btn-lg mb-1 mr-2"
-                        href="contents.html">Documentation</a>
-                    <a role="button" aria-pressed="true" class="btn-custom btn-lg mb-1"
-                        href="https://pymavryk.mavryk.org" target="_blank">Interactive course</a>
-                </div>
-                <div class="mt-4 mb-5 text-center">
-                    <iframe
-                        src="https://ghbtns.com/github-btn.html?user=mavryk-network&repo=pymavryk&type=star&count=true&size=large"
-                        frameborder="0" scrolling="0" width="130" height="30" title="PyMavryk"></iframe>
-                </div>
+        <div class="hero-container text-center">
+            <img src="_static/img/pymavryk.png" alt="PyMavryk" class="hero-logo" />
+            <p class="hero-subtitle" style="color: #DCDCDC;">
+                A Python library for interacting with Mavryk blockchain, testing smart contracts, and writing Michelson scripts.
+            </p>
+            <div class="hero-buttons">
+                <a role="button" aria-pressed="true" class="btn-custom"
+                    href="contents.html">Documentation</a>
+                <a role="button" aria-pressed="true" class="btn-custom"
+                    href="https://github.com/mavryk-network/pymavryk" target="_blank">GitHub</a>
             </div>
         </div>
-
     </div>
 
     <a id="integration-testing"></a>
-    <div class="container-fluid pr-0 pt-4 section-dark">
-        <div class="row no-gutters align-items-center">
-            <div class="col col-lg-3 col-md-12 pl-4 pr-2" style="font-size: 1.2em;">
-                <h2 style="text-transform: uppercase;">Integration testing</h2><br />
-                <p>You can run tests either on a remote node (without actual injecting) or using a builtin interpreter,
-                    <b>it
-                        takes seconds to execute</b>, not minutes.</p><br />
-                <p>PyMavryk allows to <b>patch</b> <kbd>AMOUNT</kbd>, <kbd>SENDER</kbd>, <kbd>SOURCE</kbd>,
-                    <kbd>BALANCE</kbd>, <kbd>NOW</kbd>, <b>initial storage</b>, and <b>handle exceptions</b> raised by
-                    <kbd>FAILWITH</kbd>.
-                </p><br />
-                <p>Builtin REPL allows to <b>mock cross-contract calls</b> — all you need is to validate parameters of
-                    the
-                    spawned transactions.</p><br />
-                <p>Contract interface is derived straight from the compiled Michelson code, <b>it doesn't matter what is
-                        the
-                        source language</b>, <a href="https://ligolang.org/" target="_blank"
-                        rel="noopener nofollow">LIGO</a>, <a href="https://www.smartpy.io/" target="_blank"
-                        rel="noopener nofollow">SmartPy</a>, or
-                    else.</p><br />
-                <p>Use the whole power of the Python unit testing framework, including various assert helpers and
-                    <b>interactive
-                        debugging</b> plugins in <a href="https://code.visualstudio.com/" target="_blank"
-                        rel="noopener nofollow">VSCode</a> and <a href="https://www.jetbrains.com/ru-ru/pycharm/"
-                        target="_blank" rel="noopener nofollow">PyCharm</a>.
-                </p>
-            </div>
-            <div class="col col-lg-9 d-none d-lg-block">
-                <div style="overflow: hidden;">
-                    <img src="_static/img/pymavryk_testing.png" />
+    <div class="container-fluid section-dark">
+        <div class="content-section">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <h2 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 1rem;">Integration testing</h2>
+                    <p style="font-size: 1rem; line-height: 1.6;">You can run tests either on a remote node (without actual injecting) or using a builtin interpreter, <b>it takes seconds to execute</b>, not minutes.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;">PyMavryk allows to <b>patch</b> <kbd>AMOUNT</kbd>, <kbd>SENDER</kbd>, <kbd>SOURCE</kbd>, <kbd>BALANCE</kbd>, <kbd>NOW</kbd>, <b>initial storage</b>, and <b>handle exceptions</b> raised by <kbd>FAILWITH</kbd>.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;">Builtin REPL allows to <b>mock cross-contract calls</b> — all you need is to validate parameters of the spawned transactions.</p>
+                </div>
+                <div class="col-lg-8 d-none d-lg-block">
+                    <img src="_static/img/pymavryk_testing.png" class="img-fluid" />
                 </div>
             </div>
         </div>
     </div>
 
     <a id="pymavryk-client"></a>
-    <div class="container-fluid pr-0 pt-5 section-light">
-        <div class="row no-gutters align-items-center">
-            <div class="col col-lg-3 col-md-12 pl-4 pr-2" style="font-size: 1.2em;">
-                <h2 style="text-transform: uppercase;">PyMavryk client</h2><br />
-                <p>The minimal setup <b>requires only a browser</b>&nbsp;— you can manage Mavryk contracts using <a
-                        href="https://colab.research.google.com/" target="_blank" rel="noopener nofollow">Google
-                        Colaboratory</a>,
-                    or any other online service that allows you to run <a href="https://jupyter.org/" target="_blank"
-                        rel="noopener nofollow">Jupyter</a> notebooks.</p>
-                <br />
-                <p>PyMavryk is capable of almost everything <a href="https://protocol.mavryk.org/api/cli-commands.html"
-                        target="_blank" rel="noopener nofollow">mavkit-client</a> can do, so you can <b>automate any</b>
-                    CI/CD <b>task</b>,
-                    key
-                    management, data conversion or other.</p><br />
-                <p>PyMavryk is perfect when you need to <b>do something fast</b>: the default node and key settings allow
-                    you
-                    to get
-                    started right away, and the built-in documentation allows you to avoid switching between windows.
-                </p>
-                <br />
-                <p>PyMavryk is built as flexible as possible: in most cases you will need only high-level interfaces, but
-                    at
-                    any moment you can go deeper and <b>customize the logic</b>.</p>
-            </div>
-            <div class="col col-lg-9 d-none d-lg-block">
-                <div style="overflow: hidden;">
-                    <img src="_static/img/pymavryk_interacting.png" />
+    <div class="container-fluid section-light">
+        <div class="content-section">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <h2 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 1rem;">PyMavryk client</h2>
+                    <p style="font-size: 1rem; line-height: 1.6;">The minimal setup <b>requires only a browser</b> — you can manage Mavryk contracts using <a href="https://colab.research.google.com/" target="_blank" rel="noopener nofollow">Google Colaboratory</a>, or any other online service that allows you to run <a href="https://jupyter.org/" target="_blank" rel="noopener nofollow">Jupyter</a> notebooks.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;">PyMavryk is capable of almost everything <a href="https://protocol.mavryk.org/api/cli-commands.html" target="_blank" rel="noopener nofollow">mavkit-client</a> can do, so you can <b>automate any</b> CI/CD <b>task</b>, key management, data conversion or other.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;">PyMavryk is perfect when you need to <b>do something fast</b>: the default node and key settings allow you to get started right away, and the built-in documentation allows you to avoid switching between windows.</p>
+                </div>
+                <div class="col-lg-8 d-none d-lg-block">
+                    <img src="_static/img/pymavryk_interacting.png" class="img-fluid" />
                 </div>
             </div>
         </div>
     </div>
 
     <a id="michelson-kernel"></a>
-    <div class="container-fluid pr-0 pt-5 section-dark">
-        <div class="row no-gutters align-items-center">
-            <div class="col col-lg-3 col-md-12 pl-4 pr-2" style="font-size: 1.2em;">
-                <h2 style="text-transform: uppercase;">Michelson kernel</h2><br />
-                <p><b>Visualize</b> and better understand <b>stack</b> transformations with the step-by-step execution
-                    and verbose logging.</p>
-                <br />
-                <p>Michelson instruction set is extended with useful <b>helpers</b> for debugging and patching context.
-                </p>
-                <br />
-                <p><b>Mock blockchain bindings</b> as you wish, even complicated scenarios like <i>Big_map</i> copying
-                    can be reproduced.</p>
-                <br />
-                <p>Shipped with <b>autocomplete and builtin documentation</b>, no need to switch tabs if you forget
-                    something.</p>
-                <br />
-            </div>
-            <div class="col col-lg-9 d-none d-lg-block">
-                <div style="overflow: hidden;">
-                    <img src="_static/img/pymavryk_kernel.png" />
+    <div class="container-fluid section-dark">
+        <div class="content-section">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <h2 style="text-transform: uppercase; font-size: 1.5rem; margin-bottom: 1rem;">Michelson kernel</h2>
+                    <p style="font-size: 1rem; line-height: 1.6;"><b>Visualize</b> and better understand <b>stack</b> transformations with the step-by-step execution and verbose logging.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;">Michelson instruction set is extended with useful <b>helpers</b> for debugging and patching context.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;"><b>Mock blockchain bindings</b> as you wish, even complicated scenarios like <i>Big_map</i> copying can be reproduced.</p>
+                    <p style="font-size: 1rem; line-height: 1.6;">Shipped with <b>autocomplete and builtin documentation</b>, no need to switch tabs if you forget something.</p>
+                </div>
+                <div class="col-lg-8 d-none d-lg-block">
+                    <img src="_static/img/pymavryk_kernel.png" class="img-fluid" />
                 </div>
             </div>
         </div>
     </div>
 
     <a id="contact"></a>
-    <div class="container-fluid pt-5 pb-5 section-gray">
-        <div class="row no-gutters">
-            <div class="col-lg-6 col-md-12 ml-auto mr-auto" style="font-size: 1.2em;">
-                <div class="row">
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <span>Resources</span>
-                        <ul class="footer-links">
-                            <li><a href="https://pymavryk.mavryk.org/contents.html">Library reference</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <span>Ask anything</span>
-                        <ul class="footer-links">
-                            <li><a href="https://t.me/MavrykNetwork" target="_blank" rel="noopener noreferrer">Telegram chat</a></li>
-                            <li><a href="https://github.com/mavrykdynamics/pymavryk/issues" target="_blank" rel="noopener noreferrer">Report an issue</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <span>Follow us</span>
-                        <ul class="footer-links">
-                            <li><a href="https://mavrykdynamics.com/" target="_blank">Mavryk Dynamics</a></li>
-                            <li><a href="https://twitter.com/MavrykDynamics" target="_blank" rel="noopener noreferrer">X/Twitter channel</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <div class="container-fluid section-gray">
+        <div class="footer-section text-center">
+            <p style="font-size: 0.9rem; color: #555; margin: 0;">
+                © Mavryk Dynamics 2025 | 
+                <a href="https://t.me/MavrykNetwork" target="_blank" rel="noopener noreferrer" style="color: #555; text-decoration: none;">Telegram</a> | 
+                <a href="https://github.com/mavrykdynamics/pymavryk/issues" target="_blank" rel="noopener noreferrer" style="color: #555; text-decoration: none;">Report an issue</a>
+            </p>
         </div>
     </div>
 </body>
