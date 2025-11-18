@@ -278,7 +278,7 @@
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Key&#39;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a key object from a public elliptic point.</span>
 
-<span class="sd">        :param public_point: elliptic point in the compressed format (see https://tezos.stackexchange.com/a/623/309)</span>
+<span class="sd">        :param public_point: elliptic point in the compressed format</span>
 <span class="sd">        :param curve: b&#39;sp&#39; for Secp256k1, b&#39;p2&#39; for P256/Secp256r1, b&#39;ed&#39; for Ed25519 (default), b&#39;BL&#39; for BLS12-381</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">public_point</span><span class="p">,</span> <span class="n">curve</span><span class="o">=</span><span class="n">curve</span><span class="p">)</span></div>
@@ -427,7 +427,7 @@
 <a class="viewcode-back" href="../../../crypto.html#pymavryk.crypto.key.Key.from_faucet">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_faucet</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;Key&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import key from a faucet file: https://teztnets.xyz/</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Import key from a faucet file: https://testnets.mavryk.network/</span>
 
 <span class="sd">        :param source: path to the json file</span>
 <span class="sd">        :rtype: Key</span>
