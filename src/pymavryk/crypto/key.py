@@ -182,7 +182,7 @@ class Key(metaclass=InlineDocstring):
     ) -> 'Key':
         """Creates a key object from a public elliptic point.
 
-        :param public_point: elliptic point in the compressed format (see https://tezos.stackexchange.com/a/623/309)
+        :param public_point: elliptic point in the compressed format
         :param curve: b'sp' for Secp256k1, b'p2' for P256/Secp256r1, b'ed' for Ed25519 (default), b'BL' for BLS12-381
         """
         return cls(public_point, curve=curve)
@@ -319,7 +319,7 @@ class Key(metaclass=InlineDocstring):
 
     @classmethod
     def from_faucet(cls, source: Union[str, dict]) -> 'Key':
-        """Import key from a faucet file: https://teztnets.xyz/
+        """Import key from a faucet file: https://testnets.mavryk.network/
 
         :param source: path to the json file
         :rtype: Key

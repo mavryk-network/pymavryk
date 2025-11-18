@@ -58,8 +58,6 @@ def block_payload_hash(predecessor: str, payload_round: int, operation_hashes: L
     :param payload_round: round number (int32)
     :param operation_hashes: flat list of non-consensus (validation pass > 0) operation hashes
     """
-    # https://gitlab.com/tezos/tezos/-/blob/master/src/proto_alpha/lib_delegate/block_forge.ml#L166
-    # https://gitlab.com/tezos/tezos/-/blob/master/src/proto_012_Psithaca/lib_protocol/block_payload_repr.ml#L41
     payload = [
         base58_decode(predecessor.encode()),
         payload_round.to_bytes(4, 'big'),

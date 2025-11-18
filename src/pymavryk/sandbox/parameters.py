@@ -45,7 +45,7 @@ sandbox_commitment = {
     "amount": "38323962971",
     "pkh": "mv1JVZzbrGpKfripWo2GiWZ7wkzoeKHna498",
     "password": "ZuPOpZgMNM",
-    "email": "nbhcylbg.xllfjgrk@tezos.example.org",
+    "email": "nbhcylbg.xllfjgrk@mavryk.example.org",
 }
 
 sandbox_addresses = {

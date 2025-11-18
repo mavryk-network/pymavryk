@@ -71,8 +71,6 @@ class ContentMixin:
     def seed_nonce_revelation(self, level: int, nonce: str):
         """Reveal the nonce committed operation in the previous cycle.
 
-        More info https://tezos.stackexchange.com/questions/567/what-are-nonce-revelations
-
         :param level: When nonce hash was committed
         :param nonce: Hex string
         :returns: dict or OperationGroup
@@ -133,8 +131,6 @@ class ContentMixin:
     @inline_doc
     def activate_account(self, activation_code='', pkh=''):
         """Activate recommended allocations for contributions to the TF fundraiser.
-
-        More info https://activate.tezos.com/
 
         :param activation_code: Secret code from pdf, leave empty for autocomplete
         :param pkh: Public key hash, leave empty for autocomplete
@@ -210,7 +206,6 @@ class ContentMixin:
         :param public_key: Public key to reveal, Base58 encoded
         :param source: Public key hash of the key revealed, leave None to use signatory address
         :param counter: Current account counter, leave None for autocomplete
-            (More info https://tezos.stackexchange.com/questions/632/how-counter-grows)
         :param fee: Leave None for autocomplete
         :param gas_limit: Leave None for autocomplete
         :param storage_limit: Leave None for autocomplete
@@ -286,7 +281,6 @@ class ContentMixin:
 
         :param script: {"code": $Micheline, "storage": $Micheline}
         :param balance: Amount transferred on the balance, WARNING: there is no default way to withdraw funds.
-            More info: https://tezos.stackexchange.com/questions/1315/can-i-withdraw-funds-from-an-empty-smart-contract
         :param delegate: Set contract delegate, default None
         :param source: Address from which funds will be sent, leave None to use signatory address
         :param counter: Current account counter, leave None for autocomplete

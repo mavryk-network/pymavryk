@@ -1,9 +1,9 @@
 # PyMavryk
 
-[![Twitter](https://badgen.net/badge/icon/TezosBakingBad?icon=twitter&label=)](https://twitter.com/TezosBakingBad)
-[![Monthly downloads](https://static.pepy.tech/badge/pytezos/month)](https://pepy.tech/project/pytezos)
+[![Twitter](https://badgen.net/badge/icon/MavrykDynamics?icon=twitter&label=)](https://twitter.com/MavrykDynamics)
+[![Monthly downloads](https://static.pepy.tech/badge/pymavryk/month)](https://pepy.tech/project/pymavryk)
 [![GitHub stars](https://img.shields.io/github/stars/mavryk-network/pymavryk?color=2c2c2c&style=plain)](https://github.com/mavryk-network/pymavryk)
-[![Python Version](https://img.shields.io/pypi/pyversions/pytezos?color=2c2c2c)](https://www.python.org)
+[![Python Version](https://img.shields.io/pypi/pyversions/pymavryk?color=2c2c2c)](https://www.python.org)
 <br>
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mavryk-network/pymavryk/master?filepath=michelson_quickstart.ipynb)
 [![License: MIT](https://img.shields.io/github/license/mavryk-network/pymavryk?color=2c2c2c)](https://github.com/mavryk-network/pymavryk/blob/next/LICENSE)
@@ -156,20 +156,6 @@ If you are working in Jupyter/Google Colab or any other interactive console, you
 >>> from pymavryk import pymavryk
 >>> pymavryk
 ```
-
-### Publications
-
-* Pymavryk 2.0 release with embedded docs and smart contract interaction engine  
-https://medium.com/coinmonks/high-level-interface-for-michelson-contracts-and-not-only-7264db76d7ae
-
-* Materials from TQuorum:Berlin workshop - building an app on top of PyMavryk and ConseilPy  
-https://medium.com/coinmonks/atomic-tips-berlin-workshop-materials-c5c8ee3f46aa
-
-* Materials from the EETH hackathon - setting up a local development infrastructure, deploying and interacting with a contract  
-https://medium.com/tezoscommons/preparing-for-the-tezos-hackathon-with-baking-bad-45f2d5fca519
-
-* Introducing integration testing engine  
-https://medium.com/tezoscommons/testing-michelson-contracts-with-pytezos-513718499e93
 
 ### Contact
 

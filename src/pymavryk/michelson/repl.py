@@ -35,7 +35,7 @@ class InterpreterResult:
 
 class Interpreter:
     """Michelson interpreter reimplemented in Python.
-    Based on the following reference: https://tezos.gitlab.io/michelson-reference/
+    Based on the following reference: https://mavryk-network.gitlab.io/michelson-reference/
     """
 
     def __init__(

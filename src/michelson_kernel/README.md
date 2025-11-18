@@ -80,8 +80,6 @@ pip uninstall pymavryk
 ```
 
 ### How it works
-* Technical details of the REPL implementation  
-https://forum.tezosagora.org/t/michelson-repl-in-a-jupyter-notebook/1749
 * Interactive tutorial demonstrating REPL features  
 https://mybinder.org/v2/gh/mavryk-network/pymavryk/binder?filepath=michelson_quickstart.ipynb
 * Same, but a rendered version  
