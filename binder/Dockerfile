@@ -24,7 +24,8 @@ USER ${NB_USER}
 RUN michelson-kernel install
 
 USER root
-COPY binder/*.ipynb ${HOME}/
+RUN mkdir -p ${HOME}/binder
+COPY binder/*.ipynb ${HOME}/binder/
 RUN chown -R ${NB_USER}:${NB_USER} ${HOME}/
 
 WORKDIR ${HOME}
