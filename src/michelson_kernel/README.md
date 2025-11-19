@@ -81,9 +81,9 @@ pip uninstall pymavryk
 
 ### How it works
 * Interactive tutorial demonstrating REPL features  
-https://mybinder.org/v2/gh/mavryk-network/pymavryk/master?filepath=binder/michelson_quickstart.ipynb
+https://mybinder.org/v2/gh/mavryk-network/pymavryk?filepath=binder/michelson_quickstart.ipynb
 * Same, but a rendered version  
-https://nbviewer.jupyter.org/github/mavryk-network/pymavryk/master/blob/binder/michelson_quickstart.ipynb
+https://nbviewer.org/github/mavryk-network/pymavryk/blob/master/binder/michelson_quickstart.ipynb
 
 ### Sample notebooks
 Located in the current repository:  
