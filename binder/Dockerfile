@@ -10,8 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY . /tmp/pymavryk
-RUN pip install notebook jupyter-client /tmp/pymavryk
-RUN michelson-kernel install
+RUN pip install 'notebook>=7.0' jupyter-client /tmp/pymavryk
 
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
@@ -21,6 +20,10 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
+USER ${NB_USER}
+RUN michelson-kernel install
+
+USER root
 COPY binder/*.ipynb ${HOME}/
 RUN chown -R ${NB_USER}:${NB_USER} ${HOME}/
 
