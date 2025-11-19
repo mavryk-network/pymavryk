@@ -141,12 +141,12 @@ $ make all
 
 ## Quick start
 
-Read [quick start guide](https://pymavryk.org/quick_start.html)  
+Read [quick start guide](https://pymavryk.mavryk.org/quick_start.html)  
 Learn how to [enable Jupyter with Michelson](./src/michelson_kernel/README.md)
 
 ## API reference
 
-Check out a complete [API reference](https://pymavryk.org/contents.html)
+Check out a complete [API reference](https://pymavryk.mavryk.org/contents.html)
 
 ### Inline documentation
 
