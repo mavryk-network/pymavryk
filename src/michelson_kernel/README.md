@@ -1,7 +1,5 @@
 ## Michelson kernel for Jupyter notebook
 
-![michelson](https://cdn-images-1.medium.com/max/800/1*r_kVx8Rsqa0TLcIaK_WUQw.gif)
-
 ## How to install
 
 ### Option 1: try online!
